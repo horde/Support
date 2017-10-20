@@ -22,7 +22,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </developer>
- <date>2017-10-17</date>
+ <date>2017-10-20</date>
  <version>
   <release>2.2.1</release>
   <api>2.2.0</api>
@@ -86,7 +86,6 @@
       <file name="InflectorTest.php" role="test" />
       <file name="MemoryTest.php" role="test" />
       <file name="ObjectStubTest.php" role="test" />
-      <file name="phpunit.xml" role="test" />
       <file name="RandomidTest.php" role="test" />
       <file name="StackTest.php" role="test" />
       <file name="StringStreamTest.php" role="test" />
@@ -176,7 +175,6 @@
    <install as="Horde/Support/Numerizer/Locale/BaseTest.php" name="test/Horde/Support/Numerizer/Locale/BaseTest.php" />
    <install as="Horde/Support/Numerizer/Locale/DeTest.php" name="test/Horde/Support/Numerizer/Locale/DeTest.php" />
    <install as="Horde/Support/ObjectStubTest.php" name="test/Horde/Support/ObjectStubTest.php" />
-   <install as="Horde/Support/phpunit.xml" name="test/Horde/Support/phpunit.xml" />
    <install as="Horde/Support/RandomidTest.php" name="test/Horde/Support/RandomidTest.php" />
    <install as="Horde/Support/StackTest.php" name="test/Horde/Support/StackTest.php" />
    <install as="Horde/Support/StringStreamTest.php" name="test/Horde/Support/StringStreamTest.php" />
@@ -520,7 +518,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
 * 
