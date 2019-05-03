@@ -3,8 +3,7 @@ id: Support
 name: Support
 full: Supporting library
 description: >-
-  Support classes not tied to Horde but is used by it. These classes can be used
-  outside of Horde as well.
+  Support library not tied to Horde but used by it.
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Support
