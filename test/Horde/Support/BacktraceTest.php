@@ -7,6 +7,10 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use \Horde_Support_Backtrace;
+use \Exception;
 
 function backtraceTestFunction()
 {
@@ -19,13 +23,13 @@ function backtraceTestFunction()
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_BacktraceTest extends PHPUnit_Framework_TestCase
+class BacktraceTest extends TestCase
 {
     // Keep these two methods on the top so that the line numbers don't change
     // when new tests are added.
     public function instanceMethod()
     {
-        return Horde_Support_BacktraceTest::staticMethod();
+        return BacktraceTest::staticMethod();
     }
 
     public static function staticMethod()
@@ -87,9 +91,9 @@ class Horde_Support_BacktraceTest extends PHPUnit_Framework_TestCase
     {
         $backtrace = new Horde_Support_Backtrace(array_slice($this->instanceMethod(), 0, 4));
         $file = __FILE__;
-        $this->assertEquals("1. Horde_Support_BacktraceTest->testToString()
-2. Horde_Support_BacktraceTest->instanceMethod() $file:88
-3. Horde_Support_BacktraceTest::staticMethod() $file:28
+        $this->assertEquals("1. Horde\Support\BacktraceTest->testToString()
+2. Horde\Support\BacktraceTest->instanceMethod() $file:88
+3. Horde\Support\BacktraceTest::staticMethod() $file:28
 4. backtraceTestFunction() $file:33
 ",
                             (string)$backtrace);

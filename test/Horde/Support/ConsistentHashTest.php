@@ -7,6 +7,9 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use Horde_Support_ConsistentHash as ConsistentHash;
 
 /**
  * @category   Horde
@@ -14,11 +17,11 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
+class ConsistentHashTest extends TestCase
 {
     public function testAddUpdatesCount()
     {
-        $h = new Horde_Support_ConsistentHash;
+        $h = new ConsistentHash;
         $this->assertEquals(0, $this->readAttribute($h, '_nodeCount'));
 
         $h->add('a');
@@ -29,7 +32,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
     public function testAddUpdatesPointCount()
     {
         $numberOfReplicas = 100;
-        $h = new Horde_Support_ConsistentHash(array(), 1, $numberOfReplicas);
+        $h = new ConsistentHash(array(), 1, $numberOfReplicas);
         $this->assertEquals(0, $this->readAttribute($h, '_pointCount'));
         $this->assertEquals(count($this->readAttribute($h, '_circle')), $this->readAttribute($h, '_pointCount'));
         $this->assertEquals(count($this->readAttribute($h, '_pointMap')), $this->readAttribute($h, '_pointCount'));
@@ -44,7 +47,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
     {
         $weight = 2;
         $numberOfReplicas = 100;
-        $h = new Horde_Support_ConsistentHash(array(), 1, $numberOfReplicas);
+        $h = new ConsistentHash(array(), 1, $numberOfReplicas);
         $this->assertEquals(0, $this->readAttribute($h, '_pointCount'));
         $this->assertEquals(count($this->readAttribute($h, '_circle')), $this->readAttribute($h, '_pointCount'));
         $this->assertEquals(count($this->readAttribute($h, '_pointMap')), $this->readAttribute($h, '_pointCount'));
@@ -57,7 +60,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testRemoveRemovesPoints()
     {
-        $h = new Horde_Support_ConsistentHash;
+        $h = new ConsistentHash;
         $this->assertEquals(0, $this->readAttribute($h, '_nodeCount'));
 
         $h->add('a');
@@ -70,7 +73,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testRemoveThrowsOnNonexistentNode()
     {
-        $h = new Horde_Support_ConsistentHash;
+        $h = new ConsistentHash;
         $this->setExpectedException('InvalidArgumentException');
         $h->remove('a');
     }
@@ -78,7 +81,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
     public function testLookupsReturnValidNodes()
     {
         $nodes = range(1, 10);
-        $h = new Horde_Support_ConsistentHash($nodes);
+        $h = new ConsistentHash($nodes);
 
         foreach (range(1, 10) as $i) {
             $this->assertContains($h->get($i), $nodes);
@@ -87,7 +90,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testLookupRatiosWithDifferentNodeWeights()
     {
-        $h = new Horde_Support_ConsistentHash;
+        $h = new ConsistentHash;
         $h->add('a', 2);
         $h->add('b', 1);
         $h->add('c', 3);
@@ -106,7 +109,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testRepeatableLookups()
     {
-        $h = new Horde_Support_ConsistentHash(range(1, 10));
+        $h = new ConsistentHash(range(1, 10));
 
         $this->assertEquals($h->get('t1'), $h->get('t1'));
         $this->assertEquals($h->get('t2'), $h->get('t2'));
@@ -114,7 +117,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testRepeatableLookupsAfterAddingAndRemoving()
     {
-        $h = new Horde_Support_ConsistentHash(range(1, 100));
+        $h = new ConsistentHash(range(1, 100));
 
         $results1 = array();
         foreach (range(1, 100) as $i)
@@ -134,12 +137,12 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testRepeatableLookupsBetweenInstances()
     {
-        $h1 = new Horde_Support_ConsistentHash(range(1, 10));
+        $h1 = new ConsistentHash(range(1, 10));
         $results1 = array();
         foreach (range(1, 100) as $i)
             $results1[] = $h1->get($i);
 
-        $h2 = new Horde_Support_ConsistentHash(range(1, 10));
+        $h2 = new ConsistentHash(range(1, 10));
         $results2 = array();
         foreach (range(1, 100) as $i)
             $results2[] = $h2->get($i);
@@ -149,7 +152,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testGetNodes()
     {
-        $h = new Horde_Support_ConsistentHash(range(1, 10));
+        $h = new ConsistentHash(range(1, 10));
         $nodes = $h->getNodes('r', 2);
 
         $this->assertInternalType('array', $nodes);
@@ -159,7 +162,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testGetNodesWithNotEnoughNodes()
     {
-        $h = new Horde_Support_ConsistentHash(array('t'));
+        $h = new ConsistentHash(array('t'));
 
         try {
             $h->getNodes('resource', 2);
@@ -169,7 +172,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testGetNodesWrapsToBeginningOfCircle()
     {
-        $h = new Horde_Support_ConsistentHash(array(), 1, 1);
+        $h = new ConsistentHash(array(), 1, 1);
 
         // Create an array of random values and one fixed test value and sort
         // them by their hashes
@@ -202,7 +205,7 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
 
     public function testFallbackWhenANodeIsRemoved()
     {
-        $h = new Horde_Support_ConsistentHash(array(), 1, 1);
+        $h = new ConsistentHash(array(), 1, 1);
 
         // Create an array of random values and one fixed test value and sort
         // them by their hashes

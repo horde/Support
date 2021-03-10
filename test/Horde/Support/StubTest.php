@@ -7,6 +7,9 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use \Horde_Support_Stub;
 
 /**
  * @category   Horde
@@ -14,7 +17,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_StubTest extends PHPUnit_Framework_TestCase
+class StubTest extends TestCase
 {
     public function testAnyOffsetIsGettable()
     {

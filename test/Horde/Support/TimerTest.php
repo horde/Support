@@ -7,6 +7,9 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use Horde_Support_Timer;
 
 /**
  * @category   Horde
@@ -14,7 +17,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_TimerTest extends PHPUnit_Framework_TestCase
+class TimerTest extends TestCase
 {
     /**
      * test instantiating a normal timer
@@ -35,11 +38,9 @@ class Horde_Support_TimerTest extends PHPUnit_Framework_TestCase
      */
     public function testNotStartedYetThrowsException()
     {
+        $this->expectException('Exception');
         $t = new Horde_Support_Timer();
-        try {
-            $t->pop();
-            $this->fail('Expected Exception');
-        } catch (Exception $e) {}
+        $t->pop();
     }
 
 }
