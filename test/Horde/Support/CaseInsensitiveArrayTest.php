@@ -8,6 +8,9 @@
  * @package    Support
  * @subpackage UnitTests
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use \Horde_Support_CaseInsensitiveArray;
 
 /**
  * @category   Horde
@@ -16,7 +19,7 @@
  * @package    Support
  * @subpackage UnitTests
  */
-class Horde_Support_CaseInsensitiveArrayTest extends PHPUnit_Framework_TestCase
+class CaseInsensitiveArrayTest extends TestCase
 {
     /**
      * @dataProvider implementsProvider

@@ -7,6 +7,9 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use \Horde_Support_Randomid;
 
 /**
  * @category   Horde
@@ -14,7 +17,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_RandomidTest extends PHPUnit_Framework_TestCase
+class RandomidTest extends TestCase
 {
     public function testLength()
     {

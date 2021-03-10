@@ -7,6 +7,9 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use \Horde_Support_Inflector;
 
 /**
  * @category   Horde
@@ -14,7 +17,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_InflectorTest extends PHPUnit_Framework_TestCase
+class InflectorTest extends TestCase
 {
     /**
      * Words to test
@@ -37,7 +40,7 @@ class Horde_Support_InflectorTest extends PHPUnit_Framework_TestCase
         'mouse' => 'mice',
     );
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->inflector = new Horde_Support_Inflector;
     }

@@ -7,6 +7,10 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+namespace Horde\Support;
+use PHPUnit\Framework\TestCase;
+use \Horde_Support_ObjectStub;
+use \stdClass;
 
 /**
  * @category   Horde
@@ -14,7 +18,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_ObjectStubTest extends PHPUnit_Framework_TestCase
+class ObjectStubTest extends TestCase
 {
     public function testUndefinedIndex()
     {
