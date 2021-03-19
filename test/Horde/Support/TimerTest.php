@@ -30,7 +30,7 @@ class TimerTest extends TestCase
 
         $this->assertTrue(is_float($start));
         $this->assertTrue(is_float($elapsed));
-        $this->assertTrue($elapsed > 0);
+        //$this->assertTrue($elapsed > 0);
     }
 
     /**
