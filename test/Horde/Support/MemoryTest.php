@@ -22,14 +22,14 @@ class MemoryTest extends TestCase
     public function testMemoryStart()
     {
         $t = new Horde_Support_Memory;
-        $this->assertInternalType('array', $t->push());
+        $this->assertIsArray($t->push());
     }
 
     public function testMemoryEnd()
     {
         $t = new Horde_Support_Memory;
         $t->push();
-        $this->assertInternalType('array', $t->pop());
+        $this->assertIsArray($t->pop());
     }
 
     public function testStartValues()

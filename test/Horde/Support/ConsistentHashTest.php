@@ -162,12 +162,10 @@ class ConsistentHashTest extends TestCase
 
     public function testGetNodesWithNotEnoughNodes()
     {
+        $this->expectException('Exception');
+        
         $h = new Horde_Support_ConsistentHash(array('t'));
-
-        try {
-            $h->getNodes('resource', 2);
-            $this->fail('Expected Exception');
-        } catch (Exception $e) {}
+        $h->getNodes('resource', 2);
     }
 
     public function testGetNodesWrapsToBeginningOfCircle()
