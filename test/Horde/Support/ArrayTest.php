@@ -143,12 +143,14 @@ class ArrayTest extends TestCase
     {
         $o = new Horde_Support_Array();
         $o->update(array());
+        $this->markTestIncomplete();
     }
 
     public function testUpdateDoesNotThrowWhenArgumentIsTraversable()
     {
         $o = new Horde_Support_Array();
         $o->update(new ArrayObject());
+        $this->markTestIncomplete();
     }
 
     public function testUpdateMergesNewValuesFromArayInArgument()
