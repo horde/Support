@@ -141,16 +141,26 @@ class ArrayTest extends TestCase
 
     public function testUpdateDoesNotThrowWhenArgumentIsAnArray()
     {
-        $o = new Horde_Support_Array();
-        $o->update(array());
-        $this->markTestIncomplete();
+        $thrown = null;
+        try {
+            $o = new Horde_Support_Array();
+            $o->update([]);
+        } catch (\Exception $e) {
+            $thrown = $e;
+        }
+        $this->assertNull($thrown);
     }
 
     public function testUpdateDoesNotThrowWhenArgumentIsTraversable()
     {
-        $o = new Horde_Support_Array();
-        $o->update(new ArrayObject());
-        $this->markTestIncomplete();
+        $thrown = null;
+        try {
+            $o = new Horde_Support_Array();
+            $o->update(new ArrayObject());
+        } catch (\Exception $e) {
+            $thrown = $e;
+        }
+        $this->assertNull($thrown);
     }
 
     public function testUpdateMergesNewValuesFromArayInArgument()
