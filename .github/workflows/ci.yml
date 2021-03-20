@@ -50,5 +50,10 @@ jobs:
         ## For unclear reasons, github action fails randomly if we do not install before we require.
         COMPOSER_ROOT_VERSION=dev-FRAMEWORK_6_0 composer install
         COMPOSER_ROOT_VERSION=dev-FRAMEWORK_6_0 composer require --dev horde/test dev-FRAMEWORK_6_0
+    - name: Install horde/test dependency and other dependencies (redo increases number of successful runs, why?)
+      run: |
+        ## For unclear reasons, github action fails randomly if we do not install before we require.
+        COMPOSER_ROOT_VERSION=dev-FRAMEWORK_6_0 composer install
+        COMPOSER_ROOT_VERSION=dev-FRAMEWORK_6_0 composer require --dev horde/test dev-FRAMEWORK_6_0
     - name: run phpunit
       run: phpunit --bootstrap test/Horde/Support/bootstrap.php test/
