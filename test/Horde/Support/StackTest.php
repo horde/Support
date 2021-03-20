@@ -22,7 +22,7 @@ class StackTest extends TestCase
     public function testEmptyConstructor()
     {
         $this->markTestIncomplete();
-        return new Horde_Support_Stack();        
+        return new Horde_Support_Stack();
     }
 
     /**
