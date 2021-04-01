@@ -1,13 +1,9 @@
 <?php
-$composerAutoload = __DIR__ . '/../../../vendor/autoload.php';
-// Catch the case where we use composer but phpunit is installed externally
-if (file_exists($composerAutoload)) {
-    require_once $composerAutoload;
+$autoload = __DIR__ . '/../../../vendor/autoload.php';
+if (file_exists($autoload)) {
+    require_once $autoload;
 }
-
-if (!class_exists(\Horde_Test_Bootstrap::class)) {
+if (!class_exists('Horde_Test_Bootstrap')) {
     require_once 'Horde/Test/Bootstrap.php';
 }
-
-require_once 'Helper/ConsistentHashInstrumented.php';
-Horde_Test_Bootstrap::bootstrap(__DIR__);
+Horde_Test_Bootstrap::bootstrap(dirname(__FILE__));
