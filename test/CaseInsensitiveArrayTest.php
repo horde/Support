@@ -8,7 +8,7 @@
  * @package    Support
  * @subpackage UnitTests
  */
-namespace Horde\Support;
+namespace Horde\Support\Test;
 use PHPUnit\Framework\TestCase;
 use \Horde_Support_CaseInsensitiveArray;
 
