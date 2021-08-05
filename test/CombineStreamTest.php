@@ -7,7 +7,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-namespace Horde\Support;
+namespace Horde\Support\Test;
 use PHPUnit\Framework\TestCase;
 use \Horde_Support_CombineStream;
 

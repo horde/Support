@@ -4,8 +4,7 @@
  * @package    Support
  * @subpackage UnitTests
  */
-namespace Horde\Support;
-use \Numerizer\Locale;
+namespace Horde\Support\Test\Numerizer\Locale;
 use PHPUnit\Framework\TestCase;
 use \Horde_Support_Numerizer;
 
