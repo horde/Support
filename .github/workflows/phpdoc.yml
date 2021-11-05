@@ -67,4 +67,3 @@ jobs:
         git add index.html index.json
         git commit -m "Updated phpdoc for $GITHUB_REPOSITORY (${GITHUB_REF##*/} branch) from ci"
         git push
-
