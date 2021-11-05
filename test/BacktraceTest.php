@@ -91,10 +91,10 @@ class BacktraceTest extends TestCase
     {
         $backtrace = new Horde_Support_Backtrace(array_slice($this->instanceMethod(), 0, 4));
         $file = __FILE__;
-        $this->assertStringContainsString('1. Horde\Support\BacktraceTest->testToString()', (string)$backtrace);
-        $this->assertStringContainsString("2. Horde\Support\BacktraceTest->instanceMethod() $file:92", (string)$backtrace);
-        $this->assertStringContainsString("3. Horde\Support\BacktraceTest::staticMethod() $file:32", (string)$backtrace);
-        $this->assertStringContainsString("4. Horde\Support\backtraceTestFunction() $file:37", (string)$backtrace);
+        $this->assertStringContainsString('1. Horde\Support\Test\BacktraceTest->testToString()', (string)$backtrace);
+        $this->assertStringContainsString("2. Horde\Support\Test\BacktraceTest->instanceMethod() $file:92", (string)$backtrace);
+        $this->assertStringContainsString("3. Horde\Support\Test\BacktraceTest::staticMethod() $file:32", (string)$backtrace);
+        $this->assertStringContainsString("4. Horde\Support\Test\backtraceTestFunction() $file:37", (string)$backtrace);
     }
 
     public function returnBacktrace()
