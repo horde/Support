@@ -9,7 +9,7 @@
  */
 namespace Horde\Support\Test;
 use PHPUnit\Framework\TestCase;
-use \Horde\Support\Helper\ConsistentHashInstrumented;
+use \Horde\Support\Test\Helper\ConsistentHashInstrumented;
 use \InvalidArgumentException;
 
 /**
