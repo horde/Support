@@ -2,8 +2,7 @@
 id: Support
 name: Support
 full: Supporting library
-description: >-
-  Support library not tied to Horde but used by it.
+description: Support library not tied to Horde but used by it.
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Support
