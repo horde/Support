@@ -4,11 +4,12 @@
   state:
     release: stable
     api: stable
-  date: 2017-10-20
+  date: 2021-12-18
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes:
+  notes: |
+    [mjr] Fix GUID generation when SERVER_NAME is empty (PR # 1, sim6@bona.gent).
 2.2.0:
   api: 2.2.0
   state:
