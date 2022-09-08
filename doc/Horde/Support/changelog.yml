@@ -8,8 +8,9 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |+
-    
+  notes: |
+    [rla] Added compatibility annotations for running on PHP 8.1+ versions.
+    |+
 3.0.0alpha4:
   api: 3.0.0alpha1
   state:
