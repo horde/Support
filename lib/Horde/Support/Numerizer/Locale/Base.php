@@ -62,6 +62,19 @@ class Horde_Support_Numerizer_Locale_Base
         'trillion' => 1000000000000,
     );
 
+    /**
+     * Formal constructor.
+     * 
+     * The factory calls into this class with an args array.
+     * Classes without a contructor may not have arguments, even if only formally.
+     *
+     * @param array $args
+     */
+    public function __construct(array $args = [])
+    {
+                
+    }
+
     public function numerize($string)
     {
         // preprocess

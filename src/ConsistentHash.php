@@ -77,7 +77,7 @@ class ConsistentHash
      *
      * @param string $key  The key to look up.
      *
-     * @return string  The primary node for $key.
+     * @return string The primary node for $key.
      */
     public function get($key)
     {

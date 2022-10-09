@@ -130,7 +130,7 @@ class HordeArray implements ArrayAccess, Countable, IteratorAggregate
 
     /**
      */
-    public function __set($key, $value)
+    public function __set($key, $value): void
     {
         $this->_array[$key] = $value;
     }
@@ -138,7 +138,7 @@ class HordeArray implements ArrayAccess, Countable, IteratorAggregate
     /**
      * Checks the existance of $key in this array
      */
-    public function __isset($key)
+    public function __isset($key): bool
     {
         return array_key_exists($key, $this->_array);
     }
@@ -146,7 +146,7 @@ class HordeArray implements ArrayAccess, Countable, IteratorAggregate
     /**
      * Removes $key from this array
      */
-    public function __unset($key)
+    public function __unset($key): void
     {
         unset($this->_array[$key]);
     }
@@ -156,7 +156,7 @@ class HordeArray implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_array);
     }

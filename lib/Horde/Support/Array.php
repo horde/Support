@@ -188,7 +188,7 @@ class Horde_Support_Array implements ArrayAccess, Countable, IteratorAggregate
      * @see __isset()
      */
     #[ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->__isset($offset);
     }
@@ -198,10 +198,9 @@ class Horde_Support_Array implements ArrayAccess, Countable, IteratorAggregate
      *
      * @see __unset()
      */
-    #[ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
-        return $this->__unset($offset);
+        $this->__unset($offset);
     }
 
 }

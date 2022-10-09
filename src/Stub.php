@@ -14,6 +14,7 @@ use ArrayAccess;
 use Countable;
 use IteratorAggregate;
 use ArrayIterator;
+use Traversable;
 
 /**
  * Class that can substitute for any object and safely do nothing.
@@ -109,20 +110,20 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
 
     /**
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
     }
 
     /**
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return false;
     }
 
     /**
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
     }
 
@@ -130,7 +131,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
 
     /**
      */
-    public function count()
+    public function count(): int
     {
         return 0;
     }
@@ -139,7 +140,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
 
     /**
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator([]);
     }
