@@ -22,7 +22,7 @@
   <email>slusarz@horde.org</email>
   <active>no</active>
  </developer>
- <date>2021-03-13</date>
+ <date>2022-10-09</date>
  <version>
   <release>3.0.0alpha5</release>
   <api>3.0.0alpha1</api>
@@ -33,10 +33,18 @@
  </stability>
  <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
  <notes>
-* 
+* [rla] Added compatibility annotations for running on PHP 8.1+ versions.
+* |+
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
+   <dir name=".github">
+    <dir name="workflows">
+     <file name="ci.yml" role="php" />
+     <file name="phpdoc.yml" role="php" />
+     <file name="update-satis.yml" role="php" />
+    </dir> <!-- /.github/workflows -->
+   </dir> <!-- /.github -->
    <dir name="doc">
     <dir name="Horde">
      <dir name="Support">
@@ -73,34 +81,58 @@
      </dir> <!-- /lib/Horde/Support -->
     </dir> <!-- /lib/Horde -->
    </dir> <!-- /lib -->
+   <dir name="src">
+    <dir name="Numerizer">
+     <dir name="Locale">
+      <file name="Base.php" role="php" />
+      <file name="De.php" role="php" />
+      <file name="Pt.php" role="php" />
+     </dir> <!-- /src/Numerizer/Locale -->
+    </dir> <!-- /src/Numerizer -->
+    <file name="Backtrace.php" role="php" />
+    <file name="CaseInsensitiveArray.php" role="php" />
+    <file name="CombineStream.php" role="php" />
+    <file name="ConsistentHash.php" role="php" />
+    <file name="Guid.php" role="php" />
+    <file name="HordeArray.php" role="php" />
+    <file name="Inflector.php" role="php" />
+    <file name="Memory.php" role="php" />
+    <file name="Numerizer.php" role="php" />
+    <file name="ObjectStub.php" role="php" />
+    <file name="Randomid.php" role="php" />
+    <file name="Stack.php" role="php" />
+    <file name="StringStream.php" role="php" />
+    <file name="Stub.php" role="php" />
+    <file name="Timer.php" role="php" />
+    <file name="Uuid.php" role="php" />
+   </dir> <!-- /src -->
    <dir name="test">
-    <dir name="Horde">
-     <dir name="Support">
-      <dir name="Numerizer">
-       <dir name="Locale">
-        <file name="BaseTest.php" role="test" />
-        <file name="DeTest.php" role="test" />
-       </dir> <!-- /test/Horde/Support/Numerizer/Locale -->
-      </dir> <!-- /test/Horde/Support/Numerizer -->
-      <file name="AllTests.php" role="test" />
-      <file name="ArrayTest.php" role="test" />
-      <file name="BacktraceTest.php" role="test" />
-      <file name="bootstrap.php" role="test" />
-      <file name="CaseInsensitiveArrayTest.php" role="test" />
-      <file name="CombineStreamTest.php" role="test" />
-      <file name="ConsistentHashTest.php" role="test" />
-      <file name="GuidTest.php" role="test" />
-      <file name="InflectorTest.php" role="test" />
-      <file name="MemoryTest.php" role="test" />
-      <file name="ObjectStubTest.php" role="test" />
-      <file name="RandomidTest.php" role="test" />
-      <file name="StackTest.php" role="test" />
-      <file name="StringStreamTest.php" role="test" />
-      <file name="StubTest.php" role="test" />
-      <file name="TimerTest.php" role="test" />
-      <file name="UuidTest.php" role="test" />
-     </dir> <!-- /test/Horde/Support -->
-    </dir> <!-- /test/Horde -->
+    <dir name="Helper">
+     <file name="ConsistentHashInstrumented.php" role="test" />
+    </dir> <!-- /test/Helper -->
+    <dir name="Numerizer">
+     <dir name="Locale">
+      <file name="BaseTest.php" role="test" />
+      <file name="DeTest.php" role="test" />
+     </dir> <!-- /test/Numerizer/Locale -->
+    </dir> <!-- /test/Numerizer -->
+    <file name="AllTests.php" role="test" />
+    <file name="ArrayTest.php" role="test" />
+    <file name="BacktraceTest.php" role="test" />
+    <file name="bootstrap.php" role="test" />
+    <file name="CaseInsensitiveArrayTest.php" role="test" />
+    <file name="CombineStreamTest.php" role="test" />
+    <file name="ConsistentHashTest.php" role="test" />
+    <file name="GuidTest.php" role="test" />
+    <file name="InflectorTest.php" role="test" />
+    <file name="MemoryTest.php" role="test" />
+    <file name="ObjectStubTest.php" role="test" />
+    <file name="RandomidTest.php" role="test" />
+    <file name="StackTest.php" role="test" />
+    <file name="StringStreamTest.php" role="test" />
+    <file name="StubTest.php" role="test" />
+    <file name="TimerTest.php" role="test" />
+    <file name="UuidTest.php" role="test" />
    </dir> <!-- /test -->
    <file name="LICENSE" role="doc" />
   </dir> <!-- / -->
@@ -119,6 +151,9 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="workflows/ci.yml" name=".github/workflows/ci.yml" />
+   <install as="workflows/phpdoc.yml" name=".github/workflows/phpdoc.yml" />
+   <install as="workflows/update-satis.yml" name=".github/workflows/update-satis.yml" />
    <install as="CHANGES" name="doc/Horde/Support/CHANGES" />
    <install as="Horde/Support/Array.php" name="lib/Horde/Support/Array.php" />
    <install as="Horde/Support/Backtrace.php" name="lib/Horde/Support/Backtrace.php" />
@@ -140,25 +175,45 @@
    <install as="Horde/Support/Timer.php" name="lib/Horde/Support/Timer.php" />
    <install as="Horde/Support/Uuid.php" name="lib/Horde/Support/Uuid.php" />
    <install as="LICENSE" name="LICENSE" />
-   <install as="Horde/Support/AllTests.php" name="test/Horde/Support/AllTests.php" />
-   <install as="Horde/Support/ArrayTest.php" name="test/Horde/Support/ArrayTest.php" />
-   <install as="Horde/Support/BacktraceTest.php" name="test/Horde/Support/BacktraceTest.php" />
-   <install as="Horde/Support/bootstrap.php" name="test/Horde/Support/bootstrap.php" />
-   <install as="Horde/Support/CaseInsensitiveArrayTest.php" name="test/Horde/Support/CaseInsensitiveArrayTest.php" />
-   <install as="Horde/Support/CombineStreamTest.php" name="test/Horde/Support/CombineStreamTest.php" />
-   <install as="Horde/Support/ConsistentHashTest.php" name="test/Horde/Support/ConsistentHashTest.php" />
-   <install as="Horde/Support/GuidTest.php" name="test/Horde/Support/GuidTest.php" />
-   <install as="Horde/Support/InflectorTest.php" name="test/Horde/Support/InflectorTest.php" />
-   <install as="Horde/Support/MemoryTest.php" name="test/Horde/Support/MemoryTest.php" />
-   <install as="Horde/Support/Numerizer/Locale/BaseTest.php" name="test/Horde/Support/Numerizer/Locale/BaseTest.php" />
-   <install as="Horde/Support/Numerizer/Locale/DeTest.php" name="test/Horde/Support/Numerizer/Locale/DeTest.php" />
-   <install as="Horde/Support/ObjectStubTest.php" name="test/Horde/Support/ObjectStubTest.php" />
-   <install as="Horde/Support/RandomidTest.php" name="test/Horde/Support/RandomidTest.php" />
-   <install as="Horde/Support/StackTest.php" name="test/Horde/Support/StackTest.php" />
-   <install as="Horde/Support/StringStreamTest.php" name="test/Horde/Support/StringStreamTest.php" />
-   <install as="Horde/Support/StubTest.php" name="test/Horde/Support/StubTest.php" />
-   <install as="Horde/Support/TimerTest.php" name="test/Horde/Support/TimerTest.php" />
-   <install as="Horde/Support/UuidTest.php" name="test/Horde/Support/UuidTest.php" />
+   <install as="Backtrace.php" name="src/Backtrace.php" />
+   <install as="CaseInsensitiveArray.php" name="src/CaseInsensitiveArray.php" />
+   <install as="CombineStream.php" name="src/CombineStream.php" />
+   <install as="ConsistentHash.php" name="src/ConsistentHash.php" />
+   <install as="Guid.php" name="src/Guid.php" />
+   <install as="HordeArray.php" name="src/HordeArray.php" />
+   <install as="Inflector.php" name="src/Inflector.php" />
+   <install as="Memory.php" name="src/Memory.php" />
+   <install as="Numerizer.php" name="src/Numerizer.php" />
+   <install as="Numerizer/Locale/Base.php" name="src/Numerizer/Locale/Base.php" />
+   <install as="Numerizer/Locale/De.php" name="src/Numerizer/Locale/De.php" />
+   <install as="Numerizer/Locale/Pt.php" name="src/Numerizer/Locale/Pt.php" />
+   <install as="ObjectStub.php" name="src/ObjectStub.php" />
+   <install as="Randomid.php" name="src/Randomid.php" />
+   <install as="Stack.php" name="src/Stack.php" />
+   <install as="StringStream.php" name="src/StringStream.php" />
+   <install as="Stub.php" name="src/Stub.php" />
+   <install as="Timer.php" name="src/Timer.php" />
+   <install as="Uuid.php" name="src/Uuid.php" />
+   <install as="AllTests.php" name="test/AllTests.php" />
+   <install as="ArrayTest.php" name="test/ArrayTest.php" />
+   <install as="BacktraceTest.php" name="test/BacktraceTest.php" />
+   <install as="bootstrap.php" name="test/bootstrap.php" />
+   <install as="CaseInsensitiveArrayTest.php" name="test/CaseInsensitiveArrayTest.php" />
+   <install as="CombineStreamTest.php" name="test/CombineStreamTest.php" />
+   <install as="ConsistentHashTest.php" name="test/ConsistentHashTest.php" />
+   <install as="GuidTest.php" name="test/GuidTest.php" />
+   <install as="Helper/ConsistentHashInstrumented.php" name="test/Helper/ConsistentHashInstrumented.php" />
+   <install as="InflectorTest.php" name="test/InflectorTest.php" />
+   <install as="MemoryTest.php" name="test/MemoryTest.php" />
+   <install as="Numerizer/Locale/BaseTest.php" name="test/Numerizer/Locale/BaseTest.php" />
+   <install as="Numerizer/Locale/DeTest.php" name="test/Numerizer/Locale/DeTest.php" />
+   <install as="ObjectStubTest.php" name="test/ObjectStubTest.php" />
+   <install as="RandomidTest.php" name="test/RandomidTest.php" />
+   <install as="StackTest.php" name="test/StackTest.php" />
+   <install as="StringStreamTest.php" name="test/StringStreamTest.php" />
+   <install as="StubTest.php" name="test/StubTest.php" />
+   <install as="TimerTest.php" name="test/TimerTest.php" />
+   <install as="UuidTest.php" name="test/UuidTest.php" />
   </filelist>
  </phprelease>
  <changelog>
@@ -525,6 +580,36 @@
   </release>
   <release>
    <version>
+    <release>2.2.1</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2021-12-18</date>
+   <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
+   <notes>
+* [mjr] Fix GUID generation when SERVER_NAME is empty (PR # 1, sim6@bona.gent).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.2</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2021-12-18</date>
+   <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
+   <notes>
+* [mjr] Silence deprecation notices for PHP 8.1 tentative return types (PR #2).
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>3.0.0alpha1</release>
     <api>3.0.0alpha1</api>
    </version>
@@ -596,7 +681,8 @@
    <date>2021-03-13</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
-* 
+* [rla] Added compatibility annotations for running on PHP 8.1+ versions.
+* |+
    </notes>
   </release>
  </changelog>

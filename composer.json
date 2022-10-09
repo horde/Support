@@ -1,5 +1,4 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/support",
     "description": "Supporting library",
     "type": "library",
@@ -22,11 +21,11 @@
             "role": "developer"
         }
     ],
-    "time": "2021-11-05",
+    "time": "2022-10-09",
     "repositories": [
         {
             "type": "composer",
-            "url": "https://horde-satis.maintaina.com/"
+            "url": "https://horde-satis.maintaina.com"
         }
     ],
     "require": {
@@ -52,6 +51,11 @@
     "autoload-dev": {
         "psr-4": {
             "Horde\\Support\\Test\\": "test/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "horde/horde-installer-plugin": true
         }
     }
 }
