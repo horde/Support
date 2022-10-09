@@ -20,6 +20,7 @@ class Horde_Support_Uuid
      */
     private $_uuid;
 
+
     /**
      * New UUID.
      */
@@ -38,18 +39,10 @@ class Horde_Support_Uuid
     {
         $this->_uuid = null;
         if (extension_loaded('uuid')) {
-            if (function_exists('uuid_export')) {
-                // UUID extension from http://www.ossp.org/pkg/lib/uuid/
-                if (uuid_create($ctx) == UUID_RC_OK &&
-                    uuid_make($ctx, UUID_MAKE_V4) == UUID_RC_OK &&
-                    uuid_export($ctx, UUID_FMT_STR, $str) == UUID_RC_OK) {
-                    $this->_uuid = $str;
-                    uuid_destroy($ctx);
-                }
-            } else {
-                // UUID extension from http://pecl.php.net/package/uuid
+               // This used to have support for both the OSSP UUID package and pecl UUID
+               // However, since that package is not available for PHP7/8, I dropped that code
+               // UUID extension from http://pecl.php.net/package/uuid
                 $this->_uuid = uuid_create();
-            }
         }
         if (!$this->_uuid) {
             list($time_mid, $time_low) = explode(' ', microtime());
