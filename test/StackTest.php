@@ -19,73 +19,72 @@ use Horde_Support_Stack;
  */
 class StackTest extends TestCase
 {
+    protected Horde_Support_Stack $prefilledStack;
+    protected Horde_Support_Stack $stack;
+
     public function testEmptyConstructor()
     {
-        $this->markTestIncomplete();
-        return new Horde_Support_Stack();
+        $this->assertInstanceOf('Horde_Support_Stack', new Horde_Support_Stack());
     }
 
-    /**
-     * @depends testEmptyConstructor
-     */
-    public function testPushOnEmptyStack($stack)
+    public function setUp(): void
     {
-        $stack->push('one');
-        $stack->push('two');
-        return $stack;
+        $this->stack = new Horde_Support_Stack();
+        $this->prefilledStack = new Horde_Support_Stack(['foo', 'bar']);
     }
 
-    /**
-     * @depends testPushOnEmptyStack
-     */
-    public function testPeekOnEmptyStack($stack)
+    public function testPushOnEmptyStack()
     {
-        $this->assertEquals('two', $stack->peek());
-        $this->assertEquals('two', $stack->peek(1));
-        $this->assertEquals('one', $stack->peek(2));
-        $this->assertNull($stack->peek(3));
-        $this->assertNull($stack->peek(0));
+        $this->stack->push('one');
+        $this->stack->push('two');
+        $this->assertEquals('two', $this->stack->peek(1), 'Looking up first element on stack');
+        $this->assertEquals(null, $this->stack->peek(3));
     }
 
-    /**
-     * @depends testPushOnEmptyStack
-     */
-    public function testPopFromEmptyStack($stack)
+    public function testPeekOnEmptyStack()
     {
-        $this->assertEquals('two', $stack->pop());
-        $this->assertEquals('one', $stack->pop());
-        $this->assertNull($stack->pop());
+        $this->stack->push('one');
+        $this->stack->push('two');
+        $this->assertEquals('two', $this->stack->peek());
+        $this->assertEquals('two', $this->stack->peek(1));
+        $this->assertEquals('one', $this->stack->peek(2));
+        $this->assertNull($this->stack->peek(3));
+        $this->assertNull($this->stack->peek(0));
+    }
+
+    public function testPopFromEmptyStack()
+    {
+        $this->stack->push('one');
+        $this->stack->push('two');
+        $this->assertEquals('two', $this->stack->pop());
+        $this->assertEquals('one', $this->stack->pop());
+        $this->assertNull($this->stack->pop());
     }
 
     public function testPrefilledConstructor()
     {
-        $this->markTestIncomplete();
-        return new Horde_Support_Stack(array('foo', 'bar'));
+        $this->assertInstanceOf('Horde_Support_Stack', $this->prefilledStack);
     }
 
-    /**
-     * @depends testPrefilledConstructor
-     */
-    public function testPeekOnPrefilledStack($stack)
+    public function testPeekOnPrefilledStack()
     {
+        $stack = $this->prefilledStack;
         $this->assertEquals('bar', $stack->peek(1));
         $this->assertEquals('foo', $stack->peek(2));
     }
 
-    /**
-     * @depends testPrefilledConstructor
-     */
-    public function testPushOnPrefilledStack($stack)
+    public function testPushOnPrefilledStack()
     {
+        $stack = $this->prefilledStack;
         $stack->push('baz');
-        return $stack;
+        $this->assertEquals('baz', $stack->peek(1));
+        $this->assertEquals('foo', $stack->peek(3));
     }
 
-    /**
-     * @depends testPushOnPrefilledStack
-     */
-    public function testPopFromPrefilledStack($stack)
+    public function testPopFromPrefilledStack()
     {
+        $stack = $this->prefilledStack;
+        $stack->push('baz');
         $this->assertEquals('baz', $stack->pop());
         $this->assertEquals('bar', $stack->pop());
         $this->assertEquals('foo', $stack->pop());
