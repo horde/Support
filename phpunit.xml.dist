@@ -1,6 +1,6 @@
 <phpunit bootstrap="test/Horde/Support/bootstrap.php" colors="true">
   <testsuites>
-    <testsuite>
+    <testsuite name="Horde Support Unit Tests">
       <directory>test</directory>
     </testsuite>
   </testsuites>

@@ -16,7 +16,7 @@
  * @package    Support
  * @subpackage UnitTests
  */
-class Horde_Support_CaseInsensitiveArrayTest extends PHPUnit_Framework_TestCase
+class Horde_Support_CaseInsensitiveArrayTest extends Horde_Test_Case
 {
     /**
      * @dataProvider implementsProvider

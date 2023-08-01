@@ -14,7 +14,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_ArrayTest extends PHPUnit_Framework_TestCase
+class Horde_Support_ArrayTest extends Horde_Test_Case
 {
     public function testImplementsArrayAccess()
     {
@@ -137,12 +137,16 @@ class Horde_Support_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testUpdateDoesNotThrowWhenArgumentIsAnArray()
     {
+        $this->expectNotToPerformAssertions();
+
         $o = new Horde_Support_Array();
         $o->update(array());
     }
 
     public function testUpdateDoesNotThrowWhenArgumentIsTraversable()
     {
+        $this->expectNotToPerformAssertions();
+
         $o = new Horde_Support_Array();
         $o->update(new ArrayObject());
     }

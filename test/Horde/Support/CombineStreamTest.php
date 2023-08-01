@@ -14,7 +14,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_CombineStreamTest extends PHPUnit_Framework_TestCase
+class Horde_Support_CombineStreamTest extends Horde_Test_Case
 {
     public function testUsage()
     {

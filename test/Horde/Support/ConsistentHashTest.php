@@ -14,30 +14,32 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
+class Horde_Support_ConsistentHashTest extends Horde_Test_Case
 {
     public function testAddUpdatesCount()
     {
         $h = new Horde_Support_ConsistentHash;
-        $this->assertEquals(0, $this->readAttribute($h, '_nodeCount'));
+        $this->assertEquals(0, $this->getPrivatePropertyValue($h, '_nodeCount'));
 
         $h->add('a');
-        $this->assertEquals(1, $this->readAttribute($h, '_nodeCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_nodes')), $this->readAttribute($h, '_nodeCount'));
+        $this->assertEquals(1, $this->getPrivatePropertyValue($h, '_nodeCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_nodes')), $this->getPrivatePropertyValue($h, '_nodeCount'));
     }
+
+    // https://www.webtipblog.com/unit-testing-private-methods-and-properties-with-phpunit/
 
     public function testAddUpdatesPointCount()
     {
         $numberOfReplicas = 100;
         $h = new Horde_Support_ConsistentHash(array(), 1, $numberOfReplicas);
-        $this->assertEquals(0, $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_circle')), $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_pointMap')), $this->readAttribute($h, '_pointCount'));
+        $this->assertEquals(0, $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_circle')), $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_pointMap')), $this->getPrivatePropertyValue($h, '_pointCount'));
 
         $h->add('a');
-        $this->assertEquals(100, $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_circle')), $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_pointMap')), $this->readAttribute($h, '_pointCount'));
+        $this->assertEquals(100, $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_circle')), $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_pointMap')), $this->getPrivatePropertyValue($h, '_pointCount'));
     }
 
     public function testAddWithWeightGeneratesMorePoints()
@@ -45,33 +47,33 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
         $weight = 2;
         $numberOfReplicas = 100;
         $h = new Horde_Support_ConsistentHash(array(), 1, $numberOfReplicas);
-        $this->assertEquals(0, $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_circle')), $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_pointMap')), $this->readAttribute($h, '_pointCount'));
+        $this->assertEquals(0, $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_circle')), $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_pointMap')), $this->getPrivatePropertyValue($h, '_pointCount'));
 
         $h->add('a', $weight);
-        $this->assertEquals($numberOfReplicas * $weight, $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_circle')), $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_pointMap')), $this->readAttribute($h, '_pointCount'));
+        $this->assertEquals($numberOfReplicas * $weight, $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_circle')), $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_pointMap')), $this->getPrivatePropertyValue($h, '_pointCount'));
     }
 
     public function testRemoveRemovesPoints()
     {
         $h = new Horde_Support_ConsistentHash;
-        $this->assertEquals(0, $this->readAttribute($h, '_nodeCount'));
+        $this->assertEquals(0, $this->getPrivatePropertyValue($h, '_nodeCount'));
 
         $h->add('a');
         $h->remove('a');
-        $this->assertEquals(0, $this->readAttribute($h, '_nodeCount'));
-        $this->assertEquals(0, $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_circle')), $this->readAttribute($h, '_pointCount'));
-        $this->assertEquals(count($this->readAttribute($h, '_pointMap')), $this->readAttribute($h, '_pointCount'));
+        $this->assertEquals(0, $this->getPrivatePropertyValue($h, '_nodeCount'));
+        $this->assertEquals(0, $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_circle')), $this->getPrivatePropertyValue($h, '_pointCount'));
+        $this->assertEquals(count($this->getPrivatePropertyValue($h, '_pointMap')), $this->getPrivatePropertyValue($h, '_pointCount'));
     }
 
     public function testRemoveThrowsOnNonexistentNode()
     {
         $h = new Horde_Support_ConsistentHash;
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException('InvalidArgumentException');
         $h->remove('a');
     }
 
@@ -152,13 +154,15 @@ class Horde_Support_ConsistentHashTest extends PHPUnit_Framework_TestCase
         $h = new Horde_Support_ConsistentHash(range(1, 10));
         $nodes = $h->getNodes('r', 2);
 
-        $this->assertInternalType('array', $nodes);
+        $this->assertIsArray($nodes);
         $this->assertEquals(count($nodes), 2);
         $this->assertNotEquals($nodes[0], $nodes[1]);
     }
 
     public function testGetNodesWithNotEnoughNodes()
     {
+        $this->expectNotToPerformAssertions();
+
         $h = new Horde_Support_ConsistentHash(array('t'));
 
         try {

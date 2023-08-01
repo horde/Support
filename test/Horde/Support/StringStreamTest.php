@@ -14,7 +14,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_StringStreamTest extends PHPUnit_Framework_TestCase
+class Horde_Support_StringStreamTest extends Horde_Test_Case
 {
     public function testMemoryUsage()
     {

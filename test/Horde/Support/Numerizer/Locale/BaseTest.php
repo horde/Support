@@ -10,7 +10,7 @@
  * @package    Support
  * @subpackage UnitTests
  */
-class Horde_Support_Numerizer_Locale_BaseTest extends PHPUnit_Framework_TestCase
+class Horde_Support_Numerizer_Locale_BaseTest extends Horde_Test_Case
 {
     public function testStraightParsing()
     {

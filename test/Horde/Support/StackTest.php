@@ -14,10 +14,12 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
-class Horde_Support_StackTest extends PHPUnit_Framework_TestCase
+class Horde_Support_StackTest extends Horde_Test_Case
 {
     public function testEmptyConstructor()
     {
+        $this->expectNotToPerformAssertions();
+
         return new Horde_Support_Stack();
     }
 
@@ -26,6 +28,8 @@ class Horde_Support_StackTest extends PHPUnit_Framework_TestCase
      */
     public function testPushOnEmptyStack($stack)
     {
+        $this->expectNotToPerformAssertions();
+
         $stack->push('one');
         $stack->push('two');
         return $stack;
@@ -55,6 +59,8 @@ class Horde_Support_StackTest extends PHPUnit_Framework_TestCase
 
     public function testPrefilledConstructor()
     {
+        $this->expectNotToPerformAssertions();
+
         return new Horde_Support_Stack(array('foo', 'bar'));
     }
 
@@ -72,6 +78,8 @@ class Horde_Support_StackTest extends PHPUnit_Framework_TestCase
      */
     public function testPushOnPrefilledStack($stack)
     {
+        $this->expectNotToPerformAssertions();
+
         $stack->push('baz');
         return $stack;
     }
