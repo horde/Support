@@ -14,6 +14,7 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+#[\AllowDynamicProperties]
 class Horde_Support_InflectorTest extends Horde_Test_Case
 {
     /**

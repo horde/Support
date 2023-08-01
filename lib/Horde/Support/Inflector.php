@@ -17,6 +17,7 @@
  * @package    Support
  * @license    http://www.horde.org/licenses/bsd
  */
+#[\AllowDynamicProperties]
 class Horde_Support_Inflector
 {
     /**
