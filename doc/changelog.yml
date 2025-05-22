@@ -1,16 +1,19 @@
 ---
-3.0.0alpha6:
-  api: 3.0.0alpha1
+3.0.0-alpha6:
+  api: 3.0.0-alpha1
   state:
     release: alpha
     api: alpha
-  date: 2022-10-09
+  date: 2025-05-22
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |+
-    
-3.0.0alpha5:
+  notes: |
+    fix: Drop dependency on Horde_Test. Require PHPUnit 12 and PHP 8.2 for next release.
+    fix: Ensure string is passed to strlen and str_pad
+    style: Apply PHP-CS-Fixer ruleset for PHP 8.3
+    ci: Update workflow metadata and default configurations
+3.0.0-alpha5:
   api: 3.0.0alpha1
   state:
     release: alpha
@@ -20,9 +23,10 @@
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
   notes: |
+    Original version string was 3.0.0alpha5
     [rla] Added compatibility annotations for running on PHP 8.1+ versions.
     |+
-3.0.0alpha4:
+3.0.0-alpha4:
   api: 3.0.0alpha1
   state:
     release: alpha
@@ -32,9 +36,10 @@
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
   notes: |
+    Original version string was 3.0.0alpha4
     Converted to Namespaced, added some type hints
     |+
-3.0.0alpha3:
+3.0.0-alpha3:
   api: 3.0.0alpha1
   state:
     release: alpha
@@ -43,8 +48,10 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |+
-3.0.0alpha2:
+  notes: |-
+    Original version string was 3.0.0alpha3
+    |+
+3.0.0-alpha2:
   api: 3.0.0alpha1
   state:
     release: alpha
@@ -53,8 +60,10 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: |+
-3.0.0alpha1:
+  notes: |-
+    Original version string was 3.0.0alpha2
+    |+
+3.0.0-alpha1:
   api: 3.0.0alpha1
   state:
     release: stable
@@ -63,7 +72,8 @@
   license:
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
-  notes: ~
+  notes: |
+    Original version string was 3.0.0alpha1
 2.2.2:
   api: 2.2.0
   state:
@@ -208,6 +218,44 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     [jan] Support uuid extension from OSSP (remi@famillecollet.com, Request #11653).
+2.0.0-beta2:
+  api: 1.2.0
+  state:
+    release: beta
+    api: stable
+  date: 2012-08-29
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Original version string was 2.0.0beta2
+    [jan] If creating Horde_Support_Backtrace from an Exception, include any previous exceptions.
+    [jan] Make Horde_Support_Backtrace#backtrace a public property.
+2.0.0-beta1:
+  api: 1.1.0
+  state:
+    release: beta
+    api: stable
+  date: 2012-07-19
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Original version string was 2.0.0beta1
+    First beta release for Horde 5.
+2.0.0-alpha1:
+  api: 1.1.0
+  state:
+    release: alpha
+    api: stable
+  date: 2012-07-06
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Original version string was 2.0.0alpha1
+    First alpha release for Horde 5.
+    [mms] Add Horde_Support_ObjectStub.
 2.0.0:
   api: 1.2.0
   state:
@@ -219,41 +267,6 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     First stable release for Horde 5.
-2.0.0beta2:
-  api: 1.2.0
-  state:
-    release: beta
-    api: stable
-  date: 2012-08-29
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] If creating Horde_Support_Backtrace from an Exception, include any previous exceptions.
-    [jan] Make Horde_Support_Backtrace#backtrace a public property.
-2.0.0beta1:
-  api: 1.1.0
-  state:
-    release: beta
-    api: stable
-  date: 2012-07-19
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First beta release for Horde 5.
-2.0.0alpha1:
-  api: 1.1.0
-  state:
-    release: alpha
-    api: stable
-  date: 2012-07-06
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First alpha release for Horde 5.
-    [mms] Add Horde_Support_ObjectStub.
 1.0.2:
   api: 1.0.0
   state:
@@ -276,6 +289,56 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     [jan] Fix tests to work with PHPUnit 3.6.
+1.0.0-beta1:
+  api: 1.0.0
+  state:
+    release: beta
+    api: beta
+  date: 2011-03-16
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Original version string was 1.0.0beta1
+    First beta release for Horde 4.
+1.0.0-alpha1:
+  api: 1.0.0
+  state:
+    release: alpha
+    api: alpha
+  date: 2011-03-08
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Original version string was 1.0.0alpha1
+    First alpha release for Horde 4.
+    Add Horde_Support_Randomid.
+    Add Portuguese numerizer.
+1.0.0-RC2:
+  api: 1.0.0
+  state:
+    release: beta
+    api: beta
+  date: 2011-03-29
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Original version string was 1.0.0RC2
+    Second release candidate for Horde 4.
+1.0.0-RC1:
+  api: 1.0.0
+  state:
+    release: beta
+    api: beta
+  date: 2011-03-22
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Original version string was 1.0.0RC1
+    First release candidate for Horde 4.
 1.0.0:
   api: 1.0.0
   state:
@@ -287,52 +350,6 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     First stable release for Horde 4.
-1.0.0RC2:
-  api: 1.0.0
-  state:
-    release: beta
-    api: beta
-  date: 2011-03-29
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    Second release candidate for Horde 4.
-1.0.0RC1:
-  api: 1.0.0
-  state:
-    release: beta
-    api: beta
-  date: 2011-03-22
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First release candidate for Horde 4.
-1.0.0beta1:
-  api: 1.0.0
-  state:
-    release: beta
-    api: beta
-  date: 2011-03-16
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First beta release for Horde 4.
-1.0.0alpha1:
-  api: 1.0.0
-  state:
-    release: alpha
-    api: alpha
-  date: 2011-03-08
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    First alpha release for Horde 4.
-    Add Horde_Support_Randomid.
-    Add Portuguese numerizer.
 0.1.0:
   api: 0.1.0
   state:

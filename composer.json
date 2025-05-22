@@ -1,5 +1,4 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/support",
     "description": "Supporting library",
     "type": "library",
@@ -22,21 +21,18 @@
             "role": "developer"
         }
     ],
-    "time": "2022-10-09",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://horde-satis.maintaina.com"
-        }
-    ],
+    "time": "2025-05-22",
+    "repositories": [],
     "require": {
-        "php": "^7.4 || ^8",
+        "php": "^8.2",
         "horde/exception": "^3 || dev-FRAMEWORK_6_0",
         "horde/stream_wrapper": "^3 || dev-FRAMEWORK_6_0",
         "horde/util": "^3 || dev-FRAMEWORK_6_0"
     },
     "require-dev": {
-        "horde/test": "^3 || dev-FRAMEWORK_6_0"
+        "phpunit/phpunit": "^12",
+        "friendsofphp/php-cs-fixer": "^3",
+        "phpstan/phpstan": "^2"
     },
     "suggest": {
         "horde/test": "^3 || dev-FRAMEWORK_6_0"
@@ -55,8 +51,11 @@
         }
     },
     "config": {
-        "allow-plugins": {
-            "horde/horde-installer-plugin": true
+        "allow-plugins": {}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-FRAMEWORK_6_0": "3.x-dev"
         }
     }
 }
