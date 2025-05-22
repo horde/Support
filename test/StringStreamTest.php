@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
  *
@@ -7,15 +8,18 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
-use \Horde_Support_StringStream;
+use Horde_Support_StringStream;
 
 /**
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
+ * @coversNothing
  */
 class StringStreamTest extends TestCase
 {
@@ -33,7 +37,9 @@ class StringStreamTest extends TestCase
         $memoryUsage3 = memory_get_usage();
         $this->assertLessThan($memoryUsage + $bytes, $memoryUsage3);
 
-        while (!feof($fp)) { fread($fp, 1024); }
+        while (!feof($fp)) {
+            fread($fp, 1024);
+        }
         $memoryUsage4 = memory_get_usage();
         $this->assertLessThan($memoryUsage + $bytes, $memoryUsage4);
     }

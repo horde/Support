@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
  *
@@ -7,22 +8,25 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
-use \Horde\Support\Test\Helper\ConsistentHashInstrumented;
-use \InvalidArgumentException;
+use Horde\Support\Test\Helper\ConsistentHashInstrumented;
+use InvalidArgumentException;
 
 /**
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
+ * @coversNothing
  */
 class ConsistentHashTest extends TestCase
 {
     public function testAddUpdatesCount()
     {
-        $h = new ConsistentHashInstrumented;
+        $h = new ConsistentHashInstrumented();
         $this->assertEquals(0, $h->exposeNodeCount());
 
         $h->add('a');
@@ -61,7 +65,7 @@ class ConsistentHashTest extends TestCase
 
     public function testRemoveRemovesPoints()
     {
-        $h = new ConsistentHashInstrumented;
+        $h = new ConsistentHashInstrumented();
         $this->assertEquals(0, $h->exposeNodeCount());
 
         $h->add('a');
@@ -74,7 +78,7 @@ class ConsistentHashTest extends TestCase
 
     public function testRemoveThrowsOnNonexistentNode()
     {
-        $h = new ConsistentHashInstrumented;
+        $h = new ConsistentHashInstrumented();
         $this->expectException(InvalidArgumentException::class);
         $h->remove('a');
     }
@@ -91,13 +95,13 @@ class ConsistentHashTest extends TestCase
 
     public function testLookupRatiosWithDifferentNodeWeights()
     {
-        $h = new ConsistentHashInstrumented;
+        $h = new ConsistentHashInstrumented();
         $h->add('a', 2);
         $h->add('b', 1);
         $h->add('c', 3);
         $h->add('d', 4);
 
-        $choices = array('a' => 0, 'b' => 0, 'c' => 0, 'd' => 0);
+        $choices = ['a' => 0, 'b' => 0, 'c' => 0, 'd' => 0];
         for ($i = 0; $i < 1000; $i++) {
             $choices[$h->get(uniqid(mt_rand()))]++;
         }
@@ -202,7 +206,8 @@ class ConsistentHashTest extends TestCase
 
         $this->assertEquals(
             $expected,
-            $h->getNodes('key', 10));
+            $h->getNodes('key', 10)
+        );
     }
 
     public function testFallbackWhenANodeIsRemoved()

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
  *
@@ -41,7 +42,7 @@ class StringStream implements Horde_Stream_Wrapper_StringStream
     public function __construct(&$string)
     {
         $this->installWrapper();
-        $this->_string =& $string;
+        $this->_string = & $string;
     }
 
     /**

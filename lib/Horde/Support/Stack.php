@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Simple class for using an array as a stack.
  *
@@ -13,9 +14,9 @@ class Horde_Support_Stack
     /**
      * @var array
      */
-    protected $_stack = array();
+    protected $_stack = [];
 
-    public function __construct($stack = array())
+    public function __construct($stack = [])
     {
         $this->_stack = $stack;
     }

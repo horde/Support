@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Wrapper around backtraces providing utility methods.
  *
@@ -84,8 +85,10 @@ class Horde_Support_Backtrace
         $this->backtrace = $e->getTrace();
         if ($previous = $e->getPrevious()) {
             $backtrace = new self($previous);
-            $this->backtrace = array_merge($backtrace->backtrace,
-                                           $this->backtrace);
+            $this->backtrace = array_merge(
+                $backtrace->backtrace,
+                $this->backtrace
+            );
         }
     }
 

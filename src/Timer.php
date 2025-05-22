@@ -1,7 +1,9 @@
 <?php
 
 namespace Horde\Support;
+
 use Exception;
+
 /**
  * Simple interface for timing operations.
  *

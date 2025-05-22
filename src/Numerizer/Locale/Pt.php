@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -67,7 +68,7 @@ class Pt extends Base
         $string = $this->_replaceTenPrefixes($string);
         $string = $this->_directReplacements($string);
         $string = $this->_replaceBigPrefixes($string);
-//        $string = $this->_fractionalAddition($string);
+        //        $string = $this->_fractionalAddition($string);
 
         return $string;
     }
@@ -101,7 +102,7 @@ class Pt extends Base
             $string = preg_replace_callback(
                 "/(?:$tp)( *\d(?=[^\d]|\$))*/i",
                 function ($m) use ($tp_replacement) {
-                    return $tp_replacement + (isset($m[1]) ? (int)$m[1] : 0);
+                    return $tp_replacement + (isset($m[1]) ? (int) $m[1] : 0);
                 },
                 $string
             );
@@ -118,7 +119,7 @@ class Pt extends Base
             $string = preg_replace_callback(
                 '/(\d*) *' . $bp . '(\d?)/i',
                 function ($m) use ($bp_replacement) {
-                    $factor = (int)$m[1];
+                    $factor = (int) $m[1];
                     if (!$factor) {
                         $factor = 1;
                     }
@@ -136,7 +137,7 @@ class Pt extends Base
     protected function _andition($string)
     {
         while (preg_match('/(\d+)((?: *e *)+)(\d*)(?=\w|$)/i', $string, $sc, PREG_OFFSET_CAPTURE)) {
-            $string = substr($string, 0, $sc[1][1]) . ((int)$sc[1][0] + (int)$sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
+            $string = substr($string, 0, $sc[1][1]) . ((int) $sc[1][0] + (int) $sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
         }
         return $string;
     }
@@ -146,7 +147,7 @@ class Pt extends Base
         return preg_replace_callback(
             '/(\d+)(?: | e |-)*/i',
             function ($m) {
-                return (string)((float)$m[1] + 0.5);
+                return (string) ((float) $m[1] + 0.5);
             },
             $string
         );

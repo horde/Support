@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -89,7 +90,7 @@ class De extends Base
             $string = preg_replace_callback(
                 "/(?:$tp)( *\d(?=[^\d]|\$))*/i",
                 function ($m) use ($tp_replacement) {
-                    return $tp_replacement + (isset($m[1]) ? (int)$m[1] : 0);
+                    return $tp_replacement + (isset($m[1]) ? (int) $m[1] : 0);
                 },
                 $string
             );
@@ -106,7 +107,7 @@ class De extends Base
             $string = preg_replace_callback(
                 '/(\d*) *' . $bp . '(\d?)/i',
                 function ($m) use ($bp_replacement) {
-                    $factor = (int)$m[1];
+                    $factor = (int) $m[1];
                     if (!$factor) {
                         $factor = 1;
                     }
@@ -125,7 +126,7 @@ class De extends Base
     {
         while (preg_match('/(\d+)((?: *und *)+)(\d*)(?=\w|$)/i', $string, $sc, PREG_OFFSET_CAPTURE)) {
             $string = substr($string, 0, $sc[1][1])
-                . ((int)$sc[1][0] + (int)$sc[3][0])
+                . ((int) $sc[1][0] + (int) $sc[3][0])
                 . substr($string, $sc[3][1] + strlen($sc[3][0]));
         }
         return $string;

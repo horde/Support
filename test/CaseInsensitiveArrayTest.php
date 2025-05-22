@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
  *
@@ -8,9 +9,11 @@
  * @package    Support
  * @subpackage UnitTests
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
-use \Horde_Support_CaseInsensitiveArray;
+use Horde_Support_CaseInsensitiveArray;
 
 /**
  * @category   Horde
@@ -18,6 +21,7 @@ use \Horde_Support_CaseInsensitiveArray;
  * @license    http://www.horde.org/licenses/bsd
  * @package    Support
  * @subpackage UnitTests
+ * @coversNothing
  */
 class CaseInsensitiveArrayTest extends TestCase
 {
@@ -32,16 +36,16 @@ class CaseInsensitiveArrayTest extends TestCase
 
     public function implementsProvider()
     {
-        return array(
-            array('ArrayAccess'),
-            array('Traversable'),
-            array('Countable')
-        );
+        return [
+            ['ArrayAccess'],
+            ['Traversable'],
+            ['Countable'],
+        ];
     }
 
     public function testOffsetGetReturnsValueAtOffset()
     {
-        $o = new Horde_Support_CaseInsensitiveArray(array('foo' => 'bar'));
+        $o = new Horde_Support_CaseInsensitiveArray(['foo' => 'bar']);
         $this->assertEquals('bar', $o['foo']);
     }
 
@@ -53,7 +57,7 @@ class CaseInsensitiveArrayTest extends TestCase
 
     public function testCaseInsensitiveKeys()
     {
-        $o = new Horde_Support_CaseInsensitiveArray(array('foo' => 'bar'));
+        $o = new Horde_Support_CaseInsensitiveArray(['foo' => 'bar']);
 
         $this->assertTrue(isset($o['foo']));
         $this->assertTrue(isset($o['Foo']));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provides a wrapper around an object to return null for non-existent
  * properties (instead of throwing an error).
@@ -40,9 +41,8 @@ class Horde_Support_ObjectStub
      */
     public function __get($name)
     {
-        return isset($this->_data->$name)
-            ? $this->_data->$name
-            : null;
+        return $this->_data->$name
+            ?? null;
     }
 
     /**

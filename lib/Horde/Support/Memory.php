@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Simple interface for tracking memory consumption.
  *
@@ -32,7 +33,7 @@ class Horde_Support_Memory
      *
      * @var array
      */
-    protected $_start = array();
+    protected $_start = [];
 
     /**
      * Current index for stacked trackers.
@@ -46,12 +47,12 @@ class Horde_Support_Memory
      */
     public function push()
     {
-        $start = $this->_start[$this->_idx++] = array(
+        $start = $this->_start[$this->_idx++] = [
             memory_get_usage(),
             memory_get_peak_usage(),
             memory_get_usage(true),
-            memory_get_peak_usage(true)
-        );
+            memory_get_peak_usage(true),
+        ];
         return $start;
     }
 
@@ -73,12 +74,12 @@ class Horde_Support_Memory
             throw new Exception('No timers have been started');
         }
         $start = $this->_start[--$this->_idx];
-        return array(
+        return [
             memory_get_usage() - $start[0],
             memory_get_peak_usage() - $start[1],
             memory_get_usage(true) - $start[2],
-            memory_get_peak_usage(true) - $start[3]
-        );
+            memory_get_peak_usage(true) - $start[3],
+        ];
     }
 
 }

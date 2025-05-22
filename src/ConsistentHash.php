@@ -118,7 +118,7 @@ class ConsistentHash
         $high = $this->_pointCount - 1;
         $index = null;
         while (true) {
-            $mid = (int)(($low + $high) / 2);
+            $mid = (int) (($low + $high) / 2);
             if ($mid == $this->_pointCount) {
                 $index = 0;
                 break;
@@ -178,7 +178,7 @@ class ConsistentHash
             $nodeIndex = $this->_nodeCount - 1;
             $nodeString = serialize($node);
 
-            $numberOfReplicas = (int)($weight * $this->_numberOfReplicas);
+            $numberOfReplicas = (int) ($weight * $this->_numberOfReplicas);
             for ($i = 0; $i < $numberOfReplicas; $i++) {
                 $this->_circle[$this->hash($nodeString . $i)] = $nodeIndex;
             }
@@ -210,7 +210,7 @@ class ConsistentHash
         }
 
         // Remove all points from the circle
-        $numberOfReplicas = (int)($this->_nodes[$nodeIndex]['w'] * $this->_numberOfReplicas);
+        $numberOfReplicas = (int) ($this->_nodes[$nodeIndex]['w'] * $this->_numberOfReplicas);
         for ($i = 0; $i < $numberOfReplicas; $i++) {
             unset($this->_circle[$this->hash($nodeString . $i)]);
         }

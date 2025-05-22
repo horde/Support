@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -87,7 +88,7 @@ class Base
 
     /**
      * Constructor
-     * 
+     *
      * These args are provided by existing code but went nowhere
      * Assuming there was some intention, let's store the args
      *
@@ -134,7 +135,7 @@ class Base
             $string = preg_replace_callback(
                 "/(?:$tp)( *\d(?=[^\d]|\$))*/i",
                 function ($m) use ($tp_replacement) {
-                    return $tp_replacement + (isset($m[1]) ? (int)$m[1] : 0);
+                    return $tp_replacement + (isset($m[1]) ? (int) $m[1] : 0);
                 },
                 $string
             );
@@ -151,7 +152,7 @@ class Base
             $string = preg_replace_callback(
                 '/(\d*) *' . $bp . '/i',
                 function ($m) use ($bp_replacement) {
-                    return $bp_replacement * (int)$m[1];
+                    return $bp_replacement * (int) $m[1];
                 },
                 $string
             );
@@ -165,7 +166,7 @@ class Base
         while (true) {
             if (preg_match('/(\d+)( | and )(\d+)(?=[^\w]|$)/i', $string, $sc, PREG_OFFSET_CAPTURE)) {
                 if (preg_match('/and/', $sc[2][0]) || (strlen($sc[1][0]) > strlen($sc[3][0]))) {
-                    $string = substr($string, 0, $sc[1][1]) . ((int)$sc[1][0] + (int)$sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
+                    $string = substr($string, 0, $sc[1][1]) . ((int) $sc[1][0] + (int) $sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
                     continue;
                 }
             }
@@ -179,7 +180,7 @@ class Base
         return preg_replace_callback(
             '/(\d+)(?: | and |-)*haAlf/i',
             function ($m) {
-                return (string)((float)$m[1] + 0.5);
+                return (string) ((float) $m[1] + 0.5);
             },
             $string
         );

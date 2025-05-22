@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
  *
@@ -18,7 +19,7 @@
 class Horde_Support_StringStream implements Horde_Stream_Wrapper_StringStream
 {
     /* Wrapper name. */
-    const WNAME = 'horde-string';
+    public const WNAME = 'horde-string';
 
     /**
      * String data.
@@ -35,7 +36,7 @@ class Horde_Support_StringStream implements Horde_Stream_Wrapper_StringStream
     public function __construct(&$string)
     {
         $this->installWrapper();
-        $this->_string =& $string;
+        $this->_string = & $string;
     }
 
     /**
@@ -49,11 +50,11 @@ class Horde_Support_StringStream implements Horde_Stream_Wrapper_StringStream
             self::WNAME . '://' . spl_object_hash($this),
             'rb',
             false,
-            stream_context_create(array(
-                self::WNAME => array(
-                    'string' => $this
-                )
-            ))
+            stream_context_create([
+                self::WNAME => [
+                    'string' => $this,
+                ],
+            ])
         );
     }
 
@@ -68,11 +69,11 @@ class Horde_Support_StringStream implements Horde_Stream_Wrapper_StringStream
             self::WNAME . '://' . spl_object_hash($this),
             'rb',
             false,
-            stream_context_create(array(
-                self::WNAME => array(
-                    'string' => $this
-                )
-            ))
+            stream_context_create([
+                self::WNAME => [
+                    'string' => $this,
+                ],
+            ])
         );
     }
 

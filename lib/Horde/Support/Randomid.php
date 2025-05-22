@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class for generating a 23-character random ID string. This string uses all
  * characters in the class [-_0-9a-zA-Z].
@@ -36,12 +37,12 @@ class Horde_Support_Randomid
      */
     public function generate()
     {
-        $elts = array(
+        $elts = [
             uniqid(),
             mt_rand(),
             getmypid(),
-            spl_object_hash($this)
-        );
+            spl_object_hash($this),
+        ];
         if (function_exists('zend_thread_id')) {
             $elts[] = zend_thread_id();
         }
@@ -59,8 +60,8 @@ class Horde_Support_Randomid
         /* Base64 can have /, +, and = characters. Restrict to URL-safe
          * characters. */
         return substr(str_replace(
-            array('/', '+', '='),
-            array('-', '_', ''),
+            ['/', '+', '='],
+            ['-', '_', ''],
             base64_encode(hash('sha1', serialize($elts), true))
         ), 0, 23);
     }

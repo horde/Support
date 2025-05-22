@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
  *
@@ -75,7 +76,7 @@ class Inflector
         '/men$/i' => 'man',
         '/feet$/i' => 'foot',
         '/people$/i' => 'person',
-        '/databases$/i'=> 'database',
+        '/databases$/i' => 'database',
         '/(quiz)zes$/i' => '\1',
         '/(matr)ices$/i' => '\1ix',
         '/(vert|ind)ices$/i' => '\1ex',

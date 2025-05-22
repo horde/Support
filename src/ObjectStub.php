@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provides a wrapper around an object to return null for non-existent
  * properties (instead of throwing an error).

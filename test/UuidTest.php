@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -7,7 +8,9 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
 use Horde_Support_Uuid;
 
@@ -16,6 +19,7 @@ use Horde_Support_Uuid;
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
+ * @coversNothing
  */
 class UuidTest extends TestCase
 {
@@ -26,7 +30,7 @@ class UuidTest extends TestCase
 
     public function testDuplicates()
     {
-        $values = array();
+        $values = [];
 
         for ($i = 0; $i < 10000; ++$i) {
             $id = strval(new Horde_Support_Uuid());

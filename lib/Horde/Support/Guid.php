@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class for generating GUIDs. Usage:
  *
@@ -33,7 +34,7 @@ class Horde_Support_Guid
      *            DEFAULT: $_SERVER['SERVER_NAME'] (or 'localhost')
      * </pre>
      */
-    public function __construct(array $opts = array())
+    public function __construct(array $opts = [])
     {
         $this->generate($opts);
     }
@@ -50,14 +51,14 @@ class Horde_Support_Guid
      *            DEFAULT: $_SERVER['SERVER_NAME'] (or 'localhost')
      * </pre>
      */
-    public function generate(array $opts = array())
+    public function generate(array $opts = [])
     {
         $this->_guid = date('YmdHis')
             . '.'
             . (isset($opts['prefix']) ? $opts['prefix'] . '.' : '')
             . strval(new Horde_Support_Randomid())
             . '@'
-            . (isset($opts['server']) ? $opts['server'] : (!empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'localhost'));
+            . ($opts['server'] ?? (!empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'localhost'));
     }
 
     /**

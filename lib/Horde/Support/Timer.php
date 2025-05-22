@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Simple interface for timing operations.
  *
@@ -21,7 +22,7 @@ class Horde_Support_Timer
      *
      * @var array
      */
-    protected $_start = array();
+    protected $_start = [];
 
     /**
      * Current index for stacked timers.

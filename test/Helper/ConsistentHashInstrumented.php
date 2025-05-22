@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Expose select internal state for unit tests
  *
@@ -9,8 +10,10 @@
  * @author Ralf Lang <lang@b1-systems.de>
  */
 declare(strict_types=1);
+
 namespace Horde\Support\Test\Helper;
-use \Horde_Support_ConsistentHash as ConsistentHash;
+
+use Horde_Support_ConsistentHash as ConsistentHash;
 
 class ConsistentHashInstrumented extends ConsistentHash
 {

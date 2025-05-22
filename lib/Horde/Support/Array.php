@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
  *
@@ -14,11 +15,11 @@ class Horde_Support_Array implements ArrayAccess, Countable, IteratorAggregate
     /**
      * Array variables
      */
-    protected $_array = array();
+    protected $_array = [];
 
     /**
      */
-    public function __construct($vars = array())
+    public function __construct($vars = [])
     {
         if (is_array($vars)) {
             $this->update($vars);
@@ -29,7 +30,7 @@ class Horde_Support_Array implements ArrayAccess, Countable, IteratorAggregate
      */
     public function get($key, $default = null)
     {
-        return isset($this->_array[$key]) ? $this->_array[$key] : $default;
+        return $this->_array[$key] ?? $default;
     }
 
     /**
@@ -64,7 +65,7 @@ class Horde_Support_Array implements ArrayAccess, Countable, IteratorAggregate
     {
         $value = $this->offsetGet($offset);
         $this->offsetUnset($offset);
-        return isset($value) ? $value : $default;
+        return $value ?? $default;
     }
 
     /**
@@ -108,7 +109,7 @@ class Horde_Support_Array implements ArrayAccess, Countable, IteratorAggregate
      */
     public function clear()
     {
-        $this->_array = array();
+        $this->_array = [];
     }
 
     /**

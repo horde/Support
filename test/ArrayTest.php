@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
  *
@@ -7,16 +8,19 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
 use Horde_Support_Array;
-use \ArrayObject;
+use ArrayObject;
 
 /**
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
+ * @coversNothing
  */
 class ArrayTest extends TestCase
 {
@@ -42,7 +46,7 @@ class ArrayTest extends TestCase
 
     public function testOffsetGetReturnsValueAtOffset()
     {
-        $o = new Horde_Support_Array(array('foo' => 'bar'));
+        $o = new Horde_Support_Array(['foo' => 'bar']);
         $this->assertEquals('bar', $o->offsetGet('foo'));
     }
 
@@ -56,7 +60,7 @@ class ArrayTest extends TestCase
 
     public function testGetReturnsValueAtOffset()
     {
-        $o = new Horde_Support_Array(array('foo' => 'bar'));
+        $o = new Horde_Support_Array(['foo' => 'bar']);
         $this->assertEquals('bar', $o->get('foo'));
     }
 
@@ -74,7 +78,7 @@ class ArrayTest extends TestCase
 
     public function testGetReturnsDefaultSpecifiedWhenValueAtOffsetIsNull()
     {
-        $o = new Horde_Support_Array(array('foo' => null));
+        $o = new Horde_Support_Array(['foo' => null]);
         $this->assertEquals('bar', $o->get('foo', 'bar'));
     }
 
@@ -82,7 +86,7 @@ class ArrayTest extends TestCase
 
     public function testGetOrSetReturnsValueAtOffset()
     {
-        $o = new Horde_Support_Array(array('foo' => 'bar'));
+        $o = new Horde_Support_Array(['foo' => 'bar']);
         $this->assertEquals('bar', $o->getOrSet('foo'));
     }
 
@@ -104,7 +108,7 @@ class ArrayTest extends TestCase
 
     public function testGetOrSetReturnsAndSetsDefaultSpecifiedValueAtOffsetIsNull()
     {
-        $o = new Horde_Support_Array(array('foo' => null));
+        $o = new Horde_Support_Array(['foo' => null]);
         $this->assertEquals('bar', $o->getOrSet('foo', 'bar'));
         $this->assertTrue($o->offsetExists('foo'));
         $this->assertEquals('bar', $o->offsetGet('foo'));
@@ -114,7 +118,7 @@ class ArrayTest extends TestCase
 
     public function testPopReturnsValueAtOffsetAndUnsetsIt()
     {
-        $o = new Horde_Support_Array(array('foo' => 'bar'));
+        $o = new Horde_Support_Array(['foo' => 'bar']);
         $this->assertEquals('bar', $o->pop('foo'));
         $this->assertFalse($o->offsetExists('foo'));
     }
@@ -133,7 +137,7 @@ class ArrayTest extends TestCase
 
     public function testPopReturnsDefaultSpecifiedWhenValueAtOffsetIsNull()
     {
-        $o = new Horde_Support_Array(array('foo' => null));
+        $o = new Horde_Support_Array(['foo' => null]);
         $this->assertEquals('bar', $o->pop('foo', 'bar'));
     }
 
@@ -166,21 +170,21 @@ class ArrayTest extends TestCase
     public function testUpdateMergesNewValuesFromArayInArgument()
     {
         $o = new Horde_Support_Array();
-        $o->update(array('foo' => 'bar'));
+        $o->update(['foo' => 'bar']);
         $this->assertEquals('bar', $o->offsetGet('foo'));
     }
 
     public function testUpdateMergesAndOverwritesExistingOffsets()
     {
-        $o = new Horde_Support_Array(array('foo' => 'bar'));
-        $o->update(array('foo' => 'baz'));
+        $o = new Horde_Support_Array(['foo' => 'bar']);
+        $o->update(['foo' => 'baz']);
         $this->assertEquals('baz', $o->offsetGet('foo'));
     }
 
     public function testUpdateMergeDoesNotAffectUnrelatedKeys()
     {
-        $o = new Horde_Support_Array(array('foo' => 'bar'));
-        $o->update(array('baz' => 'qux'));
+        $o = new Horde_Support_Array(['foo' => 'bar']);
+        $o->update(['baz' => 'qux']);
         $this->assertEquals('qux', $o->offsetGet('baz'));
     }
 
@@ -188,7 +192,7 @@ class ArrayTest extends TestCase
 
     public function testClearErasesTheArray()
     {
-        $o = new Horde_Support_Array(array('foo' => 'bar'));
+        $o = new Horde_Support_Array(['foo' => 'bar']);
         $o->clear();
         $this->assertEquals(0, $o->count());
     }
@@ -198,13 +202,13 @@ class ArrayTest extends TestCase
     public function testGetKeysReturnsEmptyArrayWhenArrayIsEmpty()
     {
         $o = new Horde_Support_Array();
-        $this->assertSame(array(), $o->getKeys());
+        $this->assertSame([], $o->getKeys());
     }
 
     public function testGetKeysReturnsArrayOfKeysInTheArray()
     {
-        $o = new Horde_Support_Array(array('foo'=> 1, 'bar' => 2));
-        $this->assertSame(array('foo', 'bar'), $o->getKeys());
+        $o = new Horde_Support_Array(['foo' => 1, 'bar' => 2]);
+        $this->assertSame(['foo', 'bar'], $o->getKeys());
     }
 
     // getValues()
@@ -212,13 +216,13 @@ class ArrayTest extends TestCase
     public function testGetValuesReturnsEmptyArrayWhenArrayIsEmpty()
     {
         $o = new Horde_Support_Array();
-        $this->assertSame(array(), $o->getValues());
+        $this->assertSame([], $o->getValues());
     }
 
     public function testGetValuesReturnsArrayOfValuesInTheArray()
     {
-        $o = new Horde_Support_Array(array('foo' => 1, 'bar' => 2));
-        $this->assertSame(array(1, 2), $o->getValues());
+        $o = new Horde_Support_Array(['foo' => 1, 'bar' => 2]);
+        $this->assertSame([1, 2], $o->getValues());
     }
 
 }

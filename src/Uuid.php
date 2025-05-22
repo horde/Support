@@ -48,8 +48,8 @@ class Uuid
         }
         if (!$this->_uuid) {
             [$time_mid, $time_low] = explode(' ', microtime());
-            $time_low = (int)$time_low;
-            $time_mid = (int)substr($time_mid, 2) & 0xffff;
+            $time_low = (int) $time_low;
+            $time_mid = (int) substr($time_mid, 2) & 0xffff;
             $time_high = mt_rand(0, 0x0fff) | 0x4000;
 
             $clock = mt_rand(0, 0x3fff) | 0x8000;

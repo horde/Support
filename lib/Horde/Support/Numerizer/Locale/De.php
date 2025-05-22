@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -18,7 +19,7 @@
  */
 class Horde_Support_Numerizer_Locale_De extends Horde_Support_Numerizer_Locale_Base
 {
-    public $DIRECT_NUMS = array(
+    public $DIRECT_NUMS = [
         'dreizehn' => 13,
         'vierzehn' => 14,
         'fünfzehn' => 15,
@@ -39,9 +40,9 @@ class Horde_Support_Numerizer_Locale_De extends Horde_Support_Numerizer_Locale_B
         'zehn' => 10,
         'elf' => 11,
         'zwölf' => 12,
-    );
+    ];
 
-    public $TEN_PREFIXES = array(
+    public $TEN_PREFIXES = [
         'zwanzig' => 20,
         'dreißig' => 30,
         'vierzig' => 40,
@@ -50,15 +51,15 @@ class Horde_Support_Numerizer_Locale_De extends Horde_Support_Numerizer_Locale_B
         'siebzig' => 70,
         'achtzig' => 80,
         'neunzig' => 90,
-    );
+    ];
 
-    public $BIG_PREFIXES = array(
+    public $BIG_PREFIXES = [
         'hundert' => 100,
         'tausend' => 1000,
         'million *' => 1000000,
         'milliarde *' => 1000000000,
         'billion *' => 1000000000000,
-    );
+    ];
 
     /**
      * Rules:
@@ -87,7 +88,7 @@ class Horde_Support_Numerizer_Locale_De extends Horde_Support_Numerizer_Locale_B
             $string = preg_replace_callback(
                 "/(?:$tp)( *\d(?=[^\d]|\$))*/i",
                 function ($m) use ($tp_replacement) {
-                    return $tp_replacement + (isset($m[1]) ? (int)$m[1] : 0);
+                    return $tp_replacement + (isset($m[1]) ? (int) $m[1] : 0);
                 },
                 $string
             );
@@ -104,7 +105,7 @@ class Horde_Support_Numerizer_Locale_De extends Horde_Support_Numerizer_Locale_B
             $string = preg_replace_callback(
                 '/(\d*) *' . $bp . '(\d?)/i',
                 function ($m) use ($bp_replacement) {
-                    $factor = (int)$m[1];
+                    $factor = (int) $m[1];
                     if (!$factor) {
                         $factor = 1;
                     }
@@ -123,7 +124,7 @@ class Horde_Support_Numerizer_Locale_De extends Horde_Support_Numerizer_Locale_B
     {
         while (preg_match('/(\d+)((?: *und *)+)(\d*)(?=\w|$)/i', $string, $sc, PREG_OFFSET_CAPTURE)) {
             $string = substr($string, 0, $sc[1][1])
-                . ((int)$sc[1][0] + (int)$sc[3][0])
+                . ((int) $sc[1][0] + (int) $sc[3][0])
                 . substr($string, $sc[3][1] + strlen($sc[3][0]));
         }
         return $string;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -16,7 +17,7 @@
  */
 class Horde_Support_Numerizer_Locale_Base
 {
-    public $DIRECT_NUMS = array(
+    public $DIRECT_NUMS = [
         'eleven' => '11',
         'twelve' => '12',
         'thirteen' => '13',
@@ -39,9 +40,9 @@ class Horde_Support_Numerizer_Locale_Base
         'nine(\W|$)' => '9$1',
         'ten' => '10',
         '\ba[\b^$]' => '1',     // doesn't make sense for an 'a' at the end to be a 1
-    );
+    ];
 
-    public $TEN_PREFIXES = array(
+    public $TEN_PREFIXES = [
         'twenty' => 20,
         'thirty' => 30,
         'forty' => 40,
@@ -52,28 +53,25 @@ class Horde_Support_Numerizer_Locale_Base
         'eighty' => 80,
         'ninety' => 90,
         'ninty' => 90, // Common mis-spelling
-    );
+    ];
 
-    public $BIG_PREFIXES = array(
+    public $BIG_PREFIXES = [
         'hundred' => 100,
         'thousand' => 1000,
         'million' => 1000000,
         'billion' => 1000000000,
         'trillion' => 1000000000000,
-    );
+    ];
 
     /**
      * Formal constructor.
-     * 
+     *
      * The factory calls into this class with an args array.
      * Classes without a contructor may not have arguments, even if only formally.
      *
      * @param array $args
      */
-    public function __construct(array $args = [])
-    {
-                
-    }
+    public function __construct(array $args = []) {}
 
     public function numerize($string)
     {
@@ -125,7 +123,7 @@ class Horde_Support_Numerizer_Locale_Base
             $string = preg_replace_callback(
                 "/(?:$tp)( *\d(?=[^\d]|\$))*/i",
                 function ($m) use ($tp_replacement) {
-                    return $tp_replacement + (isset($m[1]) ? (int)$m[1] : 0);
+                    return $tp_replacement + (isset($m[1]) ? (int) $m[1] : 0);
                 },
                 $string
             );
@@ -142,7 +140,7 @@ class Horde_Support_Numerizer_Locale_Base
             $string = preg_replace_callback(
                 '/(\d*) *' . $bp . '/i',
                 function ($m) use ($bp_replacement) {
-                    return $bp_replacement * (int)$m[1];
+                    return $bp_replacement * (int) $m[1];
                 },
                 $string
             );
@@ -156,7 +154,7 @@ class Horde_Support_Numerizer_Locale_Base
         while (true) {
             if (preg_match('/(\d+)( | and )(\d+)(?=[^\w]|$)/i', $string, $sc, PREG_OFFSET_CAPTURE)) {
                 if (preg_match('/and/', $sc[2][0]) || (strlen($sc[1][0]) > strlen($sc[3][0]))) {
-                    $string = substr($string, 0, $sc[1][1]) . ((int)$sc[1][0] + (int)$sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
+                    $string = substr($string, 0, $sc[1][1]) . ((int) $sc[1][0] + (int) $sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
                     continue;
                 }
             }
@@ -170,7 +168,7 @@ class Horde_Support_Numerizer_Locale_Base
         return preg_replace_callback(
             '/(\d+)(?: | and |-)*haAlf/i',
             function ($m) {
-                return (string)((float)$m[1] + 0.5);
+                return (string) ((float) $m[1] + 0.5);
             },
             $string
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
  *
@@ -45,7 +46,7 @@ class Horde_Support_CombineStream implements Horde_Stream_Wrapper_CombineStream
      */
     public function fopen()
     {
-        $context = stream_context_create(array('horde-combine' => array('data' => $this)));
+        $context = stream_context_create(['horde-combine' => ['data' => $this]]);
         return fopen('horde-combine://' . spl_object_hash($this), 'rb', false, $context);
     }
 
@@ -56,7 +57,7 @@ class Horde_Support_CombineStream implements Horde_Stream_Wrapper_CombineStream
      */
     public function getFileObject()
     {
-        $context = stream_context_create(array('horde-combine' => array('data' => $this)));
+        $context = stream_context_create(['horde-combine' => ['data' => $this]]);
         return new SplFileObject('horde-combine://' . spl_object_hash($this), 'rb', false, $context);
     }
 

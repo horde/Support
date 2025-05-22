@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
  *
@@ -7,15 +8,18 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
-use \Horde_Support_Inflector;
+use Horde_Support_Inflector;
 
 /**
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
+ * @coversNothing
  */
 class InflectorTest extends TestCase
 {
@@ -24,7 +28,7 @@ class InflectorTest extends TestCase
      *
      * @var array $words
      */
-    public $words = array(
+    public $words = [
         'sheep' => 'sheep',
         'man' => 'men',
         'woman' => 'women',
@@ -38,11 +42,11 @@ class InflectorTest extends TestCase
         'child' => 'children',
         'moose' => 'moose',
         'mouse' => 'mice',
-    );
+    ];
 
     public function setUp(): void
     {
-        $this->inflector = new Horde_Support_Inflector;
+        $this->inflector = new Horde_Support_Inflector();
     }
 
     public function testSingularizeAndPluralize()
@@ -94,49 +98,49 @@ class InflectorTest extends TestCase
     public function testUnderscore()
     {
         // most common scenarios (camelize => underscore)
-        $this->assertEquals('derek',            $this->inflector->underscore('Derek'));
-        $this->assertEquals('dereks_test',      $this->inflector->underscore('dereksTest'));
-        $this->assertEquals('dereks_test',      $this->inflector->underscore('DereksTest'));
-        $this->assertEquals('dereks_test',      $this->inflector->underscore('Dereks_Test'));
+        $this->assertEquals('derek', $this->inflector->underscore('Derek'));
+        $this->assertEquals('dereks_test', $this->inflector->underscore('dereksTest'));
+        $this->assertEquals('dereks_test', $this->inflector->underscore('DereksTest'));
+        $this->assertEquals('dereks_test', $this->inflector->underscore('Dereks_Test'));
         $this->assertEquals('dereks_name_test', $this->inflector->underscore('DereksName_Test'));
 
         // not as common (already underscore)
-        $this->assertEquals('derek',       $this->inflector->underscore('derek'));
+        $this->assertEquals('derek', $this->inflector->underscore('derek'));
         $this->assertEquals('dereks_test', $this->inflector->underscore('dereks_test'));
     }
 
     public function testDasherize()
     {
-        $this->assertEquals('derek',            $this->inflector->dasherize('Derek'));
-        $this->assertEquals('dereks-test',      $this->inflector->dasherize('dereksTest'));
-        $this->assertEquals('dereks-test',      $this->inflector->dasherize('DereksTest'));
-        $this->assertEquals('dereks-test',      $this->inflector->dasherize('Dereks_Test'));
+        $this->assertEquals('derek', $this->inflector->dasherize('Derek'));
+        $this->assertEquals('dereks-test', $this->inflector->dasherize('dereksTest'));
+        $this->assertEquals('dereks-test', $this->inflector->dasherize('DereksTest'));
+        $this->assertEquals('dereks-test', $this->inflector->dasherize('Dereks_Test'));
         $this->assertEquals('dereks-name-test', $this->inflector->dasherize('DereksName_Test'));
-        $this->assertEquals('derek',            $this->inflector->dasherize('derek'));
-        $this->assertEquals('dereks-test',      $this->inflector->dasherize('dereks_test'));
+        $this->assertEquals('derek', $this->inflector->dasherize('derek'));
+        $this->assertEquals('dereks-test', $this->inflector->dasherize('dereks_test'));
     }
 
     public function testHumanize()
     {
         // most common scenarios (column name => human)
-        $this->assertEquals('Derek',          $this->inflector->humanize('derek'));
-        $this->assertEquals('Dereks test',    $this->inflector->humanize('dereks_test'));
-        $this->assertEquals('Dereks test',    $this->inflector->humanize('dereks_test_id'));
+        $this->assertEquals('Derek', $this->inflector->humanize('derek'));
+        $this->assertEquals('Dereks test', $this->inflector->humanize('dereks_test'));
+        $this->assertEquals('Dereks test', $this->inflector->humanize('dereks_test_id'));
 
         // not as common (columns are usually underscored)
-        $this->assertEquals('Derek',          $this->inflector->humanize('Derek'));
-        $this->assertEquals('Dereks',         $this->inflector->humanize('Dereks'));
-        $this->assertEquals('Dereks test',    $this->inflector->humanize('dereksTest'));
-        $this->assertEquals('Dereks test',    $this->inflector->humanize('dereksTestId'));
-        $this->assertEquals('Dereks test',    $this->inflector->humanize('DereksTest'));
-        $this->assertEquals('Dereks test',    $this->inflector->humanize('Dereks_Test'));
+        $this->assertEquals('Derek', $this->inflector->humanize('Derek'));
+        $this->assertEquals('Dereks', $this->inflector->humanize('Dereks'));
+        $this->assertEquals('Dereks test', $this->inflector->humanize('dereksTest'));
+        $this->assertEquals('Dereks test', $this->inflector->humanize('dereksTestId'));
+        $this->assertEquals('Dereks test', $this->inflector->humanize('DereksTest'));
+        $this->assertEquals('Dereks test', $this->inflector->humanize('Dereks_Test'));
     }
 
     public function testDemodularize()
     {
         $this->assertEquals('Stuff', $this->inflector->demodulize('Fax_Job_Stuff'));
-        $this->assertEquals('Job',   $this->inflector->demodulize('Fax_Job'));
-        $this->assertEquals('Fax',   $this->inflector->demodulize('Fax'));
+        $this->assertEquals('Job', $this->inflector->demodulize('Fax_Job'));
+        $this->assertEquals('Fax', $this->inflector->demodulize('Fax'));
     }
 
     /**
@@ -145,15 +149,15 @@ class InflectorTest extends TestCase
     public function testTableize()
     {
         // most common scenarios (class => table)
-        $this->assertEquals('dereks',       $this->inflector->tableize('Derek'));
-        $this->assertEquals('dereks',       $this->inflector->tableize('Dereks'));
+        $this->assertEquals('dereks', $this->inflector->tableize('Derek'));
+        $this->assertEquals('dereks', $this->inflector->tableize('Dereks'));
         $this->assertEquals('dereks_tests', $this->inflector->tableize('dereksTest'));
         $this->assertEquals('dereks_tests', $this->inflector->tableize('DereksTest'));
         $this->assertEquals('dereks_tests', $this->inflector->tableize('Dereks_Test'));
         $this->assertEquals('dereks_tests', $this->inflector->tableize('Dereks/Test'));
 
         // not as common (already underscore)
-        $this->assertEquals('dereks',       $this->inflector->tableize('derek'));
+        $this->assertEquals('dereks', $this->inflector->tableize('derek'));
         $this->assertEquals('dereks_tests', $this->inflector->tableize('dereks_test'));
         $this->assertEquals('dereks_tests', $this->inflector->tableize('dereks/test'));
     }
@@ -163,14 +167,14 @@ class InflectorTest extends TestCase
      */
     public function testClassify()
     {
-        $this->assertEquals('Derek',       $this->inflector->classify('derek'));
-        $this->assertEquals('DereksTest',  $this->inflector->classify('dereks_test'));
+        $this->assertEquals('Derek', $this->inflector->classify('derek'));
+        $this->assertEquals('DereksTest', $this->inflector->classify('dereks_test'));
 
         // not as common
-        $this->assertEquals('Derek',       $this->inflector->classify('Derek'));
-        $this->assertEquals('Derek',       $this->inflector->classify('Dereks'));
-        $this->assertEquals('DereksTest',  $this->inflector->classify('dereksTest'));
-        $this->assertEquals('DereksTest',  $this->inflector->classify('DereksTest'));
+        $this->assertEquals('Derek', $this->inflector->classify('Derek'));
+        $this->assertEquals('Derek', $this->inflector->classify('Dereks'));
+        $this->assertEquals('DereksTest', $this->inflector->classify('dereksTest'));
+        $this->assertEquals('DereksTest', $this->inflector->classify('DereksTest'));
         $this->assertEquals('Dereks_Test', $this->inflector->classify('Dereks_Test'));
     }
 

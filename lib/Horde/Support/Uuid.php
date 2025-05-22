@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class for generating RFC 4122 UUIDs. Usage:
  *
@@ -39,15 +40,15 @@ class Horde_Support_Uuid
     {
         $this->_uuid = null;
         if (extension_loaded('uuid')) {
-               // This used to have support for both the OSSP UUID package and pecl UUID
-               // However, since that package is not available for PHP7/8, I dropped that code
-               // UUID extension from http://pecl.php.net/package/uuid
-                $this->_uuid = uuid_create();
+            // This used to have support for both the OSSP UUID package and pecl UUID
+            // However, since that package is not available for PHP7/8, I dropped that code
+            // UUID extension from http://pecl.php.net/package/uuid
+            $this->_uuid = uuid_create();
         }
         if (!$this->_uuid) {
-            list($time_mid, $time_low) = explode(' ', microtime());
-            $time_low = (int)$time_low;
-            $time_mid = (int)substr($time_mid, 2) & 0xffff;
+            [$time_mid, $time_low] = explode(' ', microtime());
+            $time_low = (int) $time_low;
+            $time_mid = (int) substr($time_mid, 2) & 0xffff;
             $time_high = mt_rand(0, 0x0fff) | 0x4000;
 
             $clock = mt_rand(0, 0x3fff) | 0x8000;
@@ -60,8 +61,14 @@ class Horde_Support_Uuid
                 : crc32(php_uname());
             $node = bin2hex(pack('nN', $node_low, $node_high));
 
-            $this->_uuid = sprintf('%08x-%04x-%04x-%04x-%s',
-                $time_low, $time_mid, $time_high, $clock, $node);
+            $this->_uuid = sprintf(
+                '%08x-%04x-%04x-%04x-%s',
+                $time_low,
+                $time_mid,
+                $time_high,
+                $clock,
+                $node
+            );
         }
     }
 

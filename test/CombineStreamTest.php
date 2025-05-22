@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
  *
@@ -7,15 +8,18 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
-use \Horde_Support_CombineStream;
+use Horde_Support_CombineStream;
 
 /**
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
+ * @coversNothing
  */
 class CombineStreamTest extends TestCase
 {
@@ -24,7 +28,7 @@ class CombineStreamTest extends TestCase
         $fp = fopen('php://temp', 'r+');
         fwrite($fp, '12345');
 
-        $data = array('ABCDE', $fp, 'fghij');
+        $data = ['ABCDE', $fp, 'fghij'];
         $ob = new Horde_Support_CombineStream($data);
         $stream = $ob->fopen();
 

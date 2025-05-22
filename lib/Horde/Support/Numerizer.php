@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -16,14 +17,14 @@
  */
 class Horde_Support_Numerizer
 {
-    public static function numerize($string, $args = array())
+    public static function numerize($string, $args = [])
     {
         return self::factory($args)->numerize($string);
     }
 
-    public static function factory($args = array())
+    public static function factory($args = [])
     {
-        $locale = isset($args['locale']) ? $args['locale'] : null;
+        $locale = $args['locale'] ?? null;
         if ($locale && Horde_String::lower($locale) != 'base') {
             $locale = str_replace(' ', '_', Horde_String::ucwords(str_replace('_', ' ', Horde_String::lower($locale))));
             $class = 'Horde_Support_Numerizer_Locale_' . $locale;
@@ -31,7 +32,7 @@ class Horde_Support_Numerizer
                 return new $class($args);
             }
 
-            list($language,) = explode('_', $locale);
+            [$language, ] = explode('_', $locale);
             if ($language != $locale) {
                 $class = 'Horde_Support_Numerizer_Locale_' . $language;
                 if (class_exists($class)) {

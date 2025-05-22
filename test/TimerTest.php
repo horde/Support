@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
  *
@@ -7,7 +8,9 @@
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
  */
+
 namespace Horde\Support\Test;
+
 use PHPUnit\Framework\TestCase;
 use Horde_Support_Timer;
 
@@ -16,6 +19,7 @@ use Horde_Support_Timer;
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
+ * @coversNothing
  */
 class TimerTest extends TestCase
 {
@@ -24,7 +28,7 @@ class TimerTest extends TestCase
      */
     public function testNormalTiming()
     {
-        $t = new Horde_Support_Timer;
+        $t = new Horde_Support_Timer();
         $start = $t->push();
         $elapsed = $t->pop();
 

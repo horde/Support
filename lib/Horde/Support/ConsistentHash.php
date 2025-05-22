@@ -1,4 +1,5 @@
 <?php
+
 /**
  * For a thorough description of consistent hashing, see
  * http://www.spiteful.com/2008/03/17/programmers-toolbox-part-3-consistent-hashing/,
@@ -27,13 +28,13 @@ class Horde_Support_ConsistentHash
      * Array representing our circle
      * @var array
      */
-    protected $_circle = array();
+    protected $_circle = [];
 
     /**
      * Numeric indices into the circle by hash position
      * @var array
      */
-    protected $_pointMap = array();
+    protected $_pointMap = [];
 
     /**
      * Number of points on the circle
@@ -45,7 +46,7 @@ class Horde_Support_ConsistentHash
      * Array of nodes.
      * @var array
      */
-    protected $_nodes = array();
+    protected $_nodes = [];
 
     /**
      * Number of nodes
@@ -60,7 +61,7 @@ class Horde_Support_ConsistentHash
      * @param integer  $weight            The weight for the initial node list.
      * @param integer  $numberOfReplicas  The number of points on the circle to generate for each node.
      */
-    public function __construct($nodes = array(), $weight = 1, $numberOfReplicas = 100)
+    public function __construct($nodes = [], $weight = 1, $numberOfReplicas = 100)
     {
         $this->_numberOfReplicas = $numberOfReplicas;
         $this->addNodes($nodes, $weight);
@@ -97,12 +98,12 @@ class Horde_Support_ConsistentHash
             throw new Exception('Not enough nodes (have ' . $this->_nodeCount . ', ' . $count . ' requested)');
         }
         if ($this->_nodeCount == 0) {
-            return array();
+            return [];
         }
 
         // Simple case
         if ($this->_nodeCount == 1) {
-            return array($this->_nodes[0]['n']);
+            return [$this->_nodes[0]['n']];
         }
 
         $hash = $this->hash(serialize($key));
@@ -112,7 +113,7 @@ class Horde_Support_ConsistentHash
         $high = $this->_pointCount - 1;
         $index = null;
         while (true) {
-            $mid = (int)(($low + $high) / 2);
+            $mid = (int) (($low + $high) / 2);
             if ($mid == $this->_pointCount) {
                 $index = 0;
                 break;
@@ -137,7 +138,7 @@ class Horde_Support_ConsistentHash
             }
         }
 
-        $nodes = array();
+        $nodes = [];
         while (count($nodes) < $count) {
             $nodeIndex = $this->_pointMap[$index++ % $this->_pointCount];
             $nodes[$nodeIndex] = $this->_nodes[$this->_circle[$nodeIndex]]['n'];
@@ -154,7 +155,7 @@ class Horde_Support_ConsistentHash
     {
         // Delegate to addNodes so that the circle is only regenerated once when
         // adding multiple nodes.
-        $this->addNodes(array($node), $weight);
+        $this->addNodes([$node], $weight);
     }
 
     /**
@@ -166,13 +167,13 @@ class Horde_Support_ConsistentHash
     public function addNodes($nodes, $weight = 1)
     {
         foreach ($nodes as $node) {
-            $this->_nodes[] = array('n' => $node, 'w' => $weight);
+            $this->_nodes[] = ['n' => $node, 'w' => $weight];
             $this->_nodeCount++;
 
             $nodeIndex = $this->_nodeCount - 1;
             $nodeString = serialize($node);
 
-            $numberOfReplicas = (int)($weight * $this->_numberOfReplicas);
+            $numberOfReplicas = (int) ($weight * $this->_numberOfReplicas);
             for ($i = 0; $i < $numberOfReplicas; $i++) {
                 $this->_circle[$this->hash($nodeString . $i)] = $nodeIndex;
             }
@@ -204,7 +205,7 @@ class Horde_Support_ConsistentHash
         }
 
         // Remove all points from the circle
-        $numberOfReplicas = (int)($this->_nodes[$nodeIndex]['w'] * $this->_numberOfReplicas);
+        $numberOfReplicas = (int) ($this->_nodes[$nodeIndex]['w'] * $this->_numberOfReplicas);
         for ($i = 0; $i < $numberOfReplicas; $i++) {
             unset($this->_circle[$this->hash($nodeString . $i)]);
         }

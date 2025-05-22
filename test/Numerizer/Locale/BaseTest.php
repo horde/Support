@@ -1,25 +1,29 @@
 <?php
-/**
- * @category   Horde
- * @package    Support
- * @subpackage UnitTests
- */
-namespace Horde\Support\Test\Numerizer\Locale;
-use \Numerizer\Locale;
-use PHPUnit\Framework\TestCase;
-use \Horde_Support_Numerizer;
 
 /**
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
  */
+
+namespace Horde\Support\Test\Numerizer\Locale;
+
+use Numerizer\Locale;
+use PHPUnit\Framework\TestCase;
+use Horde_Support_Numerizer;
+
+/**
+ * @category   Horde
+ * @package    Support
+ * @subpackage UnitTests
+ * @coversNothing
+ */
 class BaseTest extends TestCase
 {
     public function testStraightParsing()
     {
         $numerizer = Horde_Support_Numerizer::factory();
-        $strings = array(
+        $strings = [
             1 => 'one',
             5 => 'five',
             10 => 'ten',
@@ -56,10 +60,10 @@ class BaseTest extends TestCase
             1250007 => 'one million two hundred fifty thousand and seven',
             1000000000 => 'one billion',
             1000000001 => 'one billion and one',
-        );
+        ];
 
         foreach ($strings as $key => $string) {
-            $this->assertEquals($key, (int)$numerizer->numerize($string));
+            $this->assertEquals($key, (int) $numerizer->numerize($string));
         }
     }
 

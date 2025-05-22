@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
  *
@@ -42,9 +43,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
      * @param string $key  The property.
      * @param mixed $val   The property's value.
      */
-    public function __set($key, $val)
-    {
-    }
+    public function __set($key, $val) {}
 
     /**
      * Return null for any requested property.
@@ -75,9 +74,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
      *
      * @param string $key  The requested object property.
      */
-    public function __unset($key)
-    {
-    }
+    public function __unset($key) {}
 
     /**
      * Gracefully accept any method call and do nothing.
@@ -85,9 +82,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
      * @param string $method  The method that was called.
      * @param array $args     The method's arguments.
      */
-    public function __call($method, $args)
-    {
-    }
+    public function __call($method, $args) {}
 
     /**
      * Gracefully accept any static method call and do nothing.
@@ -95,9 +90,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
      * @param string $method  The method that was called.
      * @param array $args     The method's arguments.
      */
-    public static function __callStatic($method, $args)
-    {
-    }
+    public static function __callStatic($method, $args) {}
 
     /* ArrayAccess methods. */
 
@@ -110,9 +103,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
 
     /**
      */
-    public function offsetSet($offset, $value): void
-    {
-    }
+    public function offsetSet($offset, $value): void {}
 
     /**
      */
@@ -123,9 +114,7 @@ class Stub implements ArrayAccess, Countable, IteratorAggregate
 
     /**
      */
-    public function offsetUnset($offset): void
-    {
-    }
+    public function offsetUnset($offset): void {}
 
     /* Countable methods. */
 

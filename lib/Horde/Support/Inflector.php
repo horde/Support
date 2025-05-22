@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
  *
@@ -24,14 +25,14 @@ class Horde_Support_Inflector
      *
      * @var array
      */
-    protected $_cache = array();
+    protected $_cache = [];
 
     /**
      * Rules for pluralizing English nouns.
      *
      * @var array
      */
-    protected $_pluralizationRules = array(
+    protected $_pluralizationRules = [
         '/move$/i' => 'moves',
         '/sex$/i' => 'sexes',
         '/child$/i' => 'children',
@@ -55,14 +56,14 @@ class Horde_Support_Inflector
         '/(ax|test)is$/i' => '$1es',
         '/s$/i' => 's',
         '/$/' => 's',
-    );
+    ];
 
     /**
      * Rules for singularizing English nouns.
      *
      * @var array
      */
-    protected $_singularizationRules = array(
+    protected $_singularizationRules = [
         '/cookies$/i' => 'cookie',
         '/moves$/i' => 'move',
         '/sexes$/i' => 'sex',
@@ -70,7 +71,7 @@ class Horde_Support_Inflector
         '/men$/i' => 'man',
         '/feet$/i' => 'foot',
         '/people$/i' => 'person',
-        '/databases$/i'=> 'database',
+        '/databases$/i' => 'database',
         '/(quiz)zes$/i' => '\1',
         '/(matr)ices$/i' => '\1ix',
         '/(vert|ind)ices$/i' => '\1ex',
@@ -95,14 +96,14 @@ class Horde_Support_Inflector
         '/([ti])a$/i' => '\1um',
         '/(n)ews$/i' => '\1ews',
         '/(.*)s$/i' => '\1',
-    );
+    ];
 
     /**
      * An array of words with the same singular and plural spellings.
      *
      * @var array
      */
-    protected $_uncountables = array(
+    protected $_uncountables = [
         'aircraft',
         'cannon',
         'deer',
@@ -116,7 +117,7 @@ class Horde_Support_Inflector
         'sheep',
         'species',
         'swine',
-    );
+    ];
 
     protected $_uncountables_keys;
     /**
@@ -226,7 +227,7 @@ class Horde_Support_Inflector
         $camelized = str_replace(' ', '', Horde_String::ucwords($camelized));
 
         if ($firstLetter == 'lower') {
-            $parts = array();
+            $parts = [];
             foreach (explode('/', $camelized) as $part) {
                 $part[0] = Horde_String::lower($part[0]);
                 $parts[] = $part;
@@ -407,7 +408,7 @@ class Horde_Support_Inflector
      */
     public function clearCache()
     {
-        $this->_cache = array();
+        $this->_cache = [];
     }
 
     /**
@@ -417,8 +418,7 @@ class Horde_Support_Inflector
      */
     public function getCache($word, $rule)
     {
-        return isset($this->_cache[$word . '|' . $rule]) ?
-            $this->_cache[$word . '|' . $rule] : false;
+        return $this->_cache[$word . '|' . $rule] ?? false;
     }
 
     /**

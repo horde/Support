@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
  *
@@ -14,7 +15,7 @@
  */
 class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_Base
 {
-    public $DIRECT_NUMS = array(
+    public $DIRECT_NUMS = [
         'treze' => '13',
         'catorze' => '14',
         'quatorze' => '14',
@@ -37,9 +38,9 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
         'dez' => '10',
         'onze' => '11',
         'doze' => '12',
-    );
+    ];
 
-    public $TEN_PREFIXES = array(
+    public $TEN_PREFIXES = [
         'vinte' => '20',
         'trinta' => '30',
         'quarenta' => '40',
@@ -48,15 +49,15 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
         'setenta' => '70',
         'oitenta' => '80',
         'noventa' => '90',
-    );
+    ];
 
-    public $BIG_PREFIXES = array(
+    public $BIG_PREFIXES = [
         'cem' => '100',
         'mil' => '1000',
         'milhao *' => '1000000',
         'milhar de *' => '1000000000',
         'biliao *' => '1000000000000',
-    );
+    ];
 
     public function numerize($string)
     {
@@ -65,7 +66,7 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
         $string = $this->_replaceTenPrefixes($string);
         $string = $this->_directReplacements($string);
         $string = $this->_replaceBigPrefixes($string);
-//        $string = $this->_fractionalAddition($string);
+        //        $string = $this->_fractionalAddition($string);
 
         return $string;
     }
@@ -99,7 +100,7 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
             $string = preg_replace_callback(
                 "/(?:$tp)( *\d(?=[^\d]|\$))*/i",
                 function ($m) use ($tp_replacement) {
-                    return $tp_replacement + (isset($m[1]) ? (int)$m[1] : 0);
+                    return $tp_replacement + (isset($m[1]) ? (int) $m[1] : 0);
                 },
                 $string
             );
@@ -116,7 +117,7 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
             $string = preg_replace_callback(
                 '/(\d*) *' . $bp . '(\d?)/i',
                 function ($m) use ($bp_replacement) {
-                    $factor = (int)$m[1];
+                    $factor = (int) $m[1];
                     if (!$factor) {
                         $factor = 1;
                     }
@@ -124,7 +125,8 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
                         . ($bp_replacement == 100 ? ($m[2] ? 'e' : '') : 'e')
                         . $m[2];
                 },
-                $string);
+                $string
+            );
             $string = $this->_andition($string);
         }
         return $string;
@@ -133,7 +135,7 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
     protected function _andition($string)
     {
         while (preg_match('/(\d+)((?: *e *)+)(\d*)(?=\w|$)/i', $string, $sc, PREG_OFFSET_CAPTURE)) {
-            $string = substr($string, 0, $sc[1][1]) . ((int)$sc[1][0] + (int)$sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
+            $string = substr($string, 0, $sc[1][1]) . ((int) $sc[1][0] + (int) $sc[3][0]) . substr($string, $sc[3][1] + strlen($sc[3][0]));
         }
         return $string;
     }
@@ -143,7 +145,7 @@ class Horde_Support_Numerizer_Locale_Pt extends Horde_Support_Numerizer_Locale_B
         return preg_replace_callback(
             '/(\d+)(?: | e |-)*/i',
             function ($m) {
-                return (string)((float)$m[1] + 0.5);
+                return (string) ((float) $m[1] + 0.5);
             },
             $string
         );
