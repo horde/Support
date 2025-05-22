@@ -36,7 +36,7 @@ license:
   uri: http://www.horde.org/licenses/bsd
 dependencies:
   required:
-    php: ^7.4 || ^8
+    php: ^8.2
     composer:
       horde/exception: ^3
       horde/stream_wrapper: ^3
@@ -46,4 +46,6 @@ dependencies:
       horde/test: ^3
   dev:
     composer:
-      horde/test: ^3
+      phpunit/phpunit: ^12
+      friendsofphp/php-cs-fixer: ^3
+      phpstan/phpstan: ^2
