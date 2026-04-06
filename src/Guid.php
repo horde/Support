@@ -9,7 +9,7 @@ namespace Horde\Support;
  * $uid = (string)new Horde_Support_Guid([$opts = array()]);
  * </code>
  *
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @category   Horde
  * @package    Support

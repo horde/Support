@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2007-2026 Horde LLC (http://www.horde.org/)
  *
  * @author   Chuck Hagenbuch <chuck@horde.org>
  * @category Horde
@@ -88,8 +88,8 @@ class StringStream implements Horde_Stream_Wrapper_StringStream
      */
     public function installWrapper()
     {
-        if (!in_array(self::WNAME, stream_get_wrappers()) &&
-            !stream_wrapper_register(self::WNAME, 'Horde_Stream_Wrapper_String')) {
+        if (!in_array(self::WNAME, stream_get_wrappers())
+            && !stream_wrapper_register(self::WNAME, 'Horde_Stream_Wrapper_String')) {
             throw new Exception('Unable to register stream wrapper.');
         }
     }

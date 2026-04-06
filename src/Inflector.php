@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2007-2026 Horde LLC (http://www.horde.org/)
  *
  * @category   Horde
  * @package    Support
@@ -223,8 +223,8 @@ class Inflector
         }
 
         $camelized = $word;
-        if (Horde_String::lower($camelized) != $camelized &&
-            strpos($camelized, '_') !== false) {
+        if (Horde_String::lower($camelized) != $camelized
+            && strpos($camelized, '_') !== false) {
             $camelized = str_replace('_', '/', $camelized);
         }
         if (strpos($camelized, '/') !== false) {

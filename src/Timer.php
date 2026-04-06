@@ -13,7 +13,7 @@ use Exception;
  *  $elapsed = $t->pop();
  * </code>
  *
- * Copyright 1999-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 1999-2026 Horde LLC (http://www.horde.org/)
  *
  * @category   Horde
  * @package    Support

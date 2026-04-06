@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2007-2026 Horde LLC (http://www.horde.org/)
  *
  * @category   Horde
  * @package    Support

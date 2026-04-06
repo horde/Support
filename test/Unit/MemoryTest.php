@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
@@ -20,6 +20,7 @@ use Horde_Support_Memory;
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
 #[CoversClass(Horde_Support_Memory::class)]
+ * @coversNothing
  */
 class MemoryTest extends TestCase
 {

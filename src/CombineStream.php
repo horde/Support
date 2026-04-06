@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * @author   Michael Slusarz <slusarz@horde.org>
  * @license  http://www.horde.org/licenses/bsd BSD
@@ -75,8 +75,8 @@ class CombineStream implements Horde_Stream_Wrapper_CombineStream
      */
     public function installWrapper()
     {
-        if (!in_array('horde-combine', stream_get_wrappers()) &&
-            !stream_wrapper_register('horde-combine', 'Horde_Stream_Wrapper_Combine')) {
+        if (!in_array('horde-combine', stream_get_wrappers())
+            && !stream_wrapper_register('horde-combine', 'Horde_Stream_Wrapper_Combine')) {
             throw new Exception('Unable to register horde-combine stream wrapper.');
         }
     }
