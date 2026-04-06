@@ -14,7 +14,7 @@ use memory_get_usage;
  * $id = (string)new Horde_Support_Randomid();
  * </code>
  *
- * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2010-2026 Horde LLC (http://www.horde.org/)
  *
  * @author   Michael Slusarz <slusarz@horde.org>
  * @category Horde
@@ -52,8 +52,8 @@ class Randomid
         if (function_exists('zend_thread_id')) {
             $elts[] = zend_thread_id();
         }
-        if (function_exists('sys_getloadavg') &&
-            ($loadavg = sys_getloadavg())) {
+        if (function_exists('sys_getloadavg')
+            && ($loadavg = sys_getloadavg())) {
             $elts = array_merge($elts, $loadavg);
         }
         if (function_exists('memory_get_usage')) {

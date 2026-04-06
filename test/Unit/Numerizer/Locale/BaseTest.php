@@ -18,6 +18,7 @@ use Horde_Support_Numerizer;
  * @package    Support
  * @subpackage UnitTests
 #[CoversClass(Horde_Support_Numerizer_Locale_Base::class)]
+ * @coversNothing
  */
 class BaseTest extends TestCase
 {

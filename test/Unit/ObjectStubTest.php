@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
@@ -21,6 +21,7 @@ use stdClass;
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
 #[CoversClass(Horde_Support_ObjectStub::class)]
+ * @coversNothing
  */
 class ObjectStubTest extends TestCase
 {

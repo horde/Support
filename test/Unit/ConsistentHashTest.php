@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2008-2026 Horde LLC (http://www.horde.org/)
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
@@ -21,6 +21,7 @@ use InvalidArgumentException;
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
 #[CoversClass(Horde_Support_ConsistentHash::class)]
+ * @coversNothing
  */
 class ConsistentHashTest extends TestCase
 {

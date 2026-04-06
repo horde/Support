@@ -3,7 +3,7 @@
 /**
  * Wrapper around backtraces providing utility methods.
  *
- * Copyright 1999-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 1999-2026 Horde LLC (http://www.horde.org/)
  *
  * @category   Horde
  * @package    Support
@@ -158,10 +158,10 @@ class Horde_Support_Backtrace
     public function __toString()
     {
         $count = count($this->backtrace);
-        $pad = strlen((string)$count);
+        $pad = strlen((string) $count);
         $map = '';
         for ($i = $count - 1; $i >= 0; $i--) {
-            $map .= str_pad((string)($count - $i), $pad, ' ', STR_PAD_LEFT) . '. ';
+            $map .= str_pad((string) ($count - $i), $pad, ' ', STR_PAD_LEFT) . '. ';
             if (isset($this->backtrace[$i]['class'])) {
                 $map .= $this->backtrace[$i]['class']
                     . $this->backtrace[$i]['type'];

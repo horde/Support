@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2008-2026 Horde LLC (http://www.horde.org/)
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
@@ -20,6 +20,7 @@ use Horde_Support_StringStream;
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
 #[CoversClass(Horde_Support_StringStream::class)]
+ * @coversNothing
  */
 class StringStreamTest extends TestCase
 {

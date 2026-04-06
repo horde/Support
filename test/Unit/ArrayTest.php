@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2007-2026 Horde LLC (http://www.horde.org/)
  *
  * @category   Horde
  * @package    Support
@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Horde_Support_Array;
 use ArrayObject;
+use Exception;
 
 /**
  * @category   Horde
@@ -150,7 +151,7 @@ class ArrayTest extends TestCase
         try {
             $o = new Horde_Support_Array();
             $o->update([]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $thrown = $e;
         }
         $this->assertNull($thrown);
@@ -162,7 +163,7 @@ class ArrayTest extends TestCase
         try {
             $o = new Horde_Support_Array();
             $o->update(new ArrayObject());
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $thrown = $e;
         }
         $this->assertNull($thrown);

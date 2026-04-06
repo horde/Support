@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2010-2026 Horde LLC (http://www.horde.org/)
  *
  * @author   Chuck Hagenbuch <chuck@horde.org>
  * @license  http://www.horde.org/licenses/bsd BSD
@@ -45,6 +45,6 @@ class Numerizer
             }
         }
 
-        return new \Horde\Support\Numerizer\Locale\Base($args);
+        return new Numerizer\Locale\Base($args);
     }
 }
