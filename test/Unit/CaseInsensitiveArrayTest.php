@@ -13,6 +13,8 @@
 namespace Horde\Support\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Horde_Support_CaseInsensitiveArray;
 
 /**
@@ -21,20 +23,18 @@ use Horde_Support_CaseInsensitiveArray;
  * @license    http://www.horde.org/licenses/bsd
  * @package    Support
  * @subpackage UnitTests
- * @coversNothing
  */
+#[CoversClass(Horde_Support_CaseInsensitiveArray::class)]
 class CaseInsensitiveArrayTest extends TestCase
 {
-    /**
-     * @dataProvider implementsProvider
-     */
+    #[DataProvider('implementsProvider')]
     public function testImplements($interface)
     {
         $o = new Horde_Support_CaseInsensitiveArray();
         $this->assertInstanceOf($interface, $o);
     }
 
-    public function implementsProvider()
+    public static function implementsProvider()
     {
         return [
             ['ArrayAccess'],

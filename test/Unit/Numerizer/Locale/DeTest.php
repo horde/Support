@@ -9,13 +9,14 @@
 namespace Horde\Support\Test\Numerizer\Locale;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Horde_Support_Numerizer;
 
 /**
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
- * @coversNothing
+#[CoversClass(Horde_Support_Numerizer_Locale_De::class)]
  */
 class DeTest extends TestCase
 {
