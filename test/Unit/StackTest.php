@@ -2,7 +2,6 @@
 
 /**
  * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
- *
  * @category   Horde
  * @package    Support
  * @subpackage UnitTests
@@ -12,6 +11,7 @@
 namespace Horde\Support\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Horde_Support_Stack;
 
 /**
@@ -19,7 +19,7 @@ use Horde_Support_Stack;
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
- * @coversNothing
+#[CoversClass(Horde_Support_Stack::class)]
  */
 class StackTest extends TestCase
 {

@@ -7,7 +7,7 @@
  * ConsistentHash does not expose the NodeCount though
  * Maybe we could find another way to observe correctness
  *
- * @author Ralf Lang <lang@b1-systems.de>
+ * @author Ralf Lang <ralf.lang@ralf-lang.de>
  */
 declare(strict_types=1);
 

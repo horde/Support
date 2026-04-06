@@ -12,6 +12,7 @@
 namespace Horde\Support\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Horde_Support_Array;
 use ArrayObject;
 
@@ -20,8 +21,8 @@ use ArrayObject;
  * @package    Support
  * @subpackage UnitTests
  * @license    http://www.horde.org/licenses/bsd
- * @coversNothing
  */
+#[CoversClass(Horde_Support_Array::class)]
 class ArrayTest extends TestCase
 {
     public function testImplementsArrayAccess()
