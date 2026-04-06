@@ -26,26 +26,22 @@ authors:
     active: false
     role: developer
 version:
-  release: 3.0.0-alpha6
+  release: 3.0.0-beta1
   api: 3.0.0alpha1
 state:
-  release: alpha
+  release: beta
   api: alpha
 license:
   identifier: BSD-2-Clause
   uri: http://www.horde.org/licenses/bsd
 dependencies:
   required:
-    php: ^8.2
+    php: ^8.1
     composer:
       horde/exception: ^3
       horde/stream_wrapper: ^3
       horde/util: ^3
-  optional:
-    composer:
-      horde/test: ^3
-  dev:
-    composer:
-      phpunit/phpunit: ^12
-      friendsofphp/php-cs-fixer: ^3
-      phpstan/phpstan: ^2
+keywords:
+  - inflection
+  - streams
+vendor: horde

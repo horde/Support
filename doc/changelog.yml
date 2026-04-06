@@ -1,4 +1,16 @@
 ---
+3.0.0-beta1:
+  api: 3.0.0-beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-04-06
+  license:
+    identifier: BSD-2-Clause
+    uri: https://spdx.org/licenses/BSD-2-Clause.html
+  notes: |-
+    style: php-cs-fixer
+    test: Modernize test suite and coverage attributes
 3.0.0-alpha6:
   api: 3.0.0-alpha1
   state:
